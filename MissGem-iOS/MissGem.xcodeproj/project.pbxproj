@@ -1,0 +1,553 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02CB27DD1FB3477B0056C16D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB27DC1FB3477B0056C16D /* AppDelegate.m */; };
+		02CB27E61FB3477B0056C16D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02CB27E41FB3477B0056C16D /* Main.storyboard */; };
+		02CB27E81FB3477B0056C16D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02CB27E71FB3477B0056C16D /* Assets.xcassets */; };
+		02CB27EB1FB3477B0056C16D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02CB27E91FB3477B0056C16D /* LaunchScreen.storyboard */; };
+		02CB27EE1FB3477B0056C16D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB27ED1FB3477B0056C16D /* main.m */; };
+		02CB27F81FB3477B0056C16D /* MissGemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB27F71FB3477B0056C16D /* MissGemTests.m */; };
+		02CB28031FB3477B0056C16D /* MissGemUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB28021FB3477B0056C16D /* MissGemUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		02CB27F41FB3477B0056C16D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02CB27D01FB3477B0056C16D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02CB27D71FB3477B0056C16D;
+			remoteInfo = MissGem;
+		};
+		02CB27FF1FB3477B0056C16D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02CB27D01FB3477B0056C16D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02CB27D71FB3477B0056C16D;
+			remoteInfo = MissGem;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02CB27D81FB3477B0056C16D /* MissGem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissGem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		02CB27DB1FB3477B0056C16D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		02CB27DC1FB3477B0056C16D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		02CB27E51FB3477B0056C16D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		02CB27E71FB3477B0056C16D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		02CB27EA1FB3477B0056C16D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		02CB27EC1FB3477B0056C16D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02CB27ED1FB3477B0056C16D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		02CB27F31FB3477B0056C16D /* MissGemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MissGemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		02CB27F71FB3477B0056C16D /* MissGemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissGemTests.m; sourceTree = "<group>"; };
+		02CB27F91FB3477B0056C16D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02CB27FE1FB3477B0056C16D /* MissGemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MissGemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		02CB28021FB3477B0056C16D /* MissGemUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissGemUITests.m; sourceTree = "<group>"; };
+		02CB28041FB3477B0056C16D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		02CB27D51FB3477B0056C16D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		02CB27F01FB3477B0056C16D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		02CB27FB1FB3477B0056C16D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02CB27CF1FB3477B0056C16D = {
+			isa = PBXGroup;
+			children = (
+				02CB27DA1FB3477B0056C16D /* MissGem */,
+				02CB27F61FB3477B0056C16D /* MissGemTests */,
+				02CB28011FB3477B0056C16D /* MissGemUITests */,
+				02CB27D91FB3477B0056C16D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		02CB27D91FB3477B0056C16D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02CB27D81FB3477B0056C16D /* MissGem.app */,
+				02CB27F31FB3477B0056C16D /* MissGemTests.xctest */,
+				02CB27FE1FB3477B0056C16D /* MissGemUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		02CB27DA1FB3477B0056C16D /* MissGem */ = {
+			isa = PBXGroup;
+			children = (
+				02CB27DB1FB3477B0056C16D /* AppDelegate.h */,
+				02CB27DC1FB3477B0056C16D /* AppDelegate.m */,
+				02CB27E41FB3477B0056C16D /* Main.storyboard */,
+				02CB27E71FB3477B0056C16D /* Assets.xcassets */,
+				02CB27E91FB3477B0056C16D /* LaunchScreen.storyboard */,
+				02CB27EC1FB3477B0056C16D /* Info.plist */,
+				02CB27ED1FB3477B0056C16D /* main.m */,
+			);
+			path = MissGem;
+			sourceTree = "<group>";
+		};
+		02CB27F61FB3477B0056C16D /* MissGemTests */ = {
+			isa = PBXGroup;
+			children = (
+				02CB27F71FB3477B0056C16D /* MissGemTests.m */,
+				02CB27F91FB3477B0056C16D /* Info.plist */,
+			);
+			path = MissGemTests;
+			sourceTree = "<group>";
+		};
+		02CB28011FB3477B0056C16D /* MissGemUITests */ = {
+			isa = PBXGroup;
+			children = (
+				02CB28021FB3477B0056C16D /* MissGemUITests.m */,
+				02CB28041FB3477B0056C16D /* Info.plist */,
+			);
+			path = MissGemUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		02CB27D71FB3477B0056C16D /* MissGem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02CB28071FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGem" */;
+			buildPhases = (
+				02CB27D41FB3477B0056C16D /* Sources */,
+				02CB27D51FB3477B0056C16D /* Frameworks */,
+				02CB27D61FB3477B0056C16D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MissGem;
+			productName = MissGem;
+			productReference = 02CB27D81FB3477B0056C16D /* MissGem.app */;
+			productType = "com.apple.product-type.application";
+		};
+		02CB27F21FB3477B0056C16D /* MissGemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02CB280A1FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGemTests" */;
+			buildPhases = (
+				02CB27EF1FB3477B0056C16D /* Sources */,
+				02CB27F01FB3477B0056C16D /* Frameworks */,
+				02CB27F11FB3477B0056C16D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				02CB27F51FB3477B0056C16D /* PBXTargetDependency */,
+			);
+			name = MissGemTests;
+			productName = MissGemTests;
+			productReference = 02CB27F31FB3477B0056C16D /* MissGemTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		02CB27FD1FB3477B0056C16D /* MissGemUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02CB280D1FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGemUITests" */;
+			buildPhases = (
+				02CB27FA1FB3477B0056C16D /* Sources */,
+				02CB27FB1FB3477B0056C16D /* Frameworks */,
+				02CB27FC1FB3477B0056C16D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				02CB28001FB3477B0056C16D /* PBXTargetDependency */,
+			);
+			name = MissGemUITests;
+			productName = MissGemUITests;
+			productReference = 02CB27FE1FB3477B0056C16D /* MissGemUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		02CB27D01FB3477B0056C16D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = Augustus;
+				TargetAttributes = {
+					02CB27D71FB3477B0056C16D = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					02CB27F21FB3477B0056C16D = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 02CB27D71FB3477B0056C16D;
+					};
+					02CB27FD1FB3477B0056C16D = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 02CB27D71FB3477B0056C16D;
+					};
+				};
+			};
+			buildConfigurationList = 02CB27D31FB3477B0056C16D /* Build configuration list for PBXProject "MissGem" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 02CB27CF1FB3477B0056C16D;
+			productRefGroup = 02CB27D91FB3477B0056C16D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				02CB27D71FB3477B0056C16D /* MissGem */,
+				02CB27F21FB3477B0056C16D /* MissGemTests */,
+				02CB27FD1FB3477B0056C16D /* MissGemUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		02CB27D61FB3477B0056C16D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02CB27EB1FB3477B0056C16D /* LaunchScreen.storyboard in Resources */,
+				02CB27E81FB3477B0056C16D /* Assets.xcassets in Resources */,
+				02CB27E61FB3477B0056C16D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		02CB27F11FB3477B0056C16D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		02CB27FC1FB3477B0056C16D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		02CB27D41FB3477B0056C16D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02CB27DD1FB3477B0056C16D /* AppDelegate.m in Sources */,
+				02CB27EE1FB3477B0056C16D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		02CB27EF1FB3477B0056C16D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02CB27F81FB3477B0056C16D /* MissGemTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		02CB27FA1FB3477B0056C16D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02CB28031FB3477B0056C16D /* MissGemUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		02CB27F51FB3477B0056C16D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 02CB27D71FB3477B0056C16D /* MissGem */;
+			targetProxy = 02CB27F41FB3477B0056C16D /* PBXContainerItemProxy */;
+		};
+		02CB28001FB3477B0056C16D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 02CB27D71FB3477B0056C16D /* MissGem */;
+			targetProxy = 02CB27FF1FB3477B0056C16D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		02CB27E41FB3477B0056C16D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				02CB27E51FB3477B0056C16D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		02CB27E91FB3477B0056C16D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				02CB27EA1FB3477B0056C16D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		02CB28051FB3477B0056C16D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		02CB28061FB3477B0056C16D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		02CB28081FB3477B0056C16D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T73CJ3E649;
+				INFOPLIST_FILE = MissGem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MissGem.MissGem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		02CB28091FB3477B0056C16D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T73CJ3E649;
+				INFOPLIST_FILE = MissGem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MissGem.MissGem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		02CB280B1FB3477B0056C16D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T73CJ3E649;
+				INFOPLIST_FILE = MissGemTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MissGem.MissGemTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MissGem.app/MissGem";
+			};
+			name = Debug;
+		};
+		02CB280C1FB3477B0056C16D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T73CJ3E649;
+				INFOPLIST_FILE = MissGemTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MissGem.MissGemTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MissGem.app/MissGem";
+			};
+			name = Release;
+		};
+		02CB280E1FB3477B0056C16D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T73CJ3E649;
+				INFOPLIST_FILE = MissGemUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MissGem.MissGemUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MissGem;
+			};
+			name = Debug;
+		};
+		02CB280F1FB3477B0056C16D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T73CJ3E649;
+				INFOPLIST_FILE = MissGemUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MissGem.MissGemUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MissGem;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02CB27D31FB3477B0056C16D /* Build configuration list for PBXProject "MissGem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02CB28051FB3477B0056C16D /* Debug */,
+				02CB28061FB3477B0056C16D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		02CB28071FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02CB28081FB3477B0056C16D /* Debug */,
+				02CB28091FB3477B0056C16D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		02CB280A1FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02CB280B1FB3477B0056C16D /* Debug */,
+				02CB280C1FB3477B0056C16D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		02CB280D1FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGemUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02CB280E1FB3477B0056C16D /* Debug */,
+				02CB280F1FB3477B0056C16D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 02CB27D01FB3477B0056C16D /* Project object */;
+}

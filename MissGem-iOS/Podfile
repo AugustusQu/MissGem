@@ -1,0 +1,57 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'MissGem' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for MissGem
+
+  pod 'gRPC', :podspec => "."
+
+pod 'SDWebImage'
+pod 'SSKeychain'
+pod 'MJRefresh'
+pod 'MBProgressHUD'
+pod 'IQKeyboardManager'
+#pod 'FDFullsreenPopGesture'
+
+#pod 'PSTAlertController'
+#pod 'UIImage-Helpers'
+#pod 'SMPageControl'
+#pod 'JTSImageViewController'
+#pod 'Pingpp'
+#pod 'ELCImagePickerController'
+#pod 'BTBadgeView'
+#pod 'JSBadgeView'
+#pod 'DZNEmptyDataSet'
+#pod 'NIMSDK'
+#pod 'SVProgressHUD'
+#pod 'Toast'
+#pod 'CocoaLumberjack'
+pod 'Reachability'
+#pod 'M80AttributedLabel'
+#pod 'FMDB'
+#pod 'RSKImageCropper'
+#pod 'Aspects'
+
+
+#pod 'ECSlidingViewController'
+#pod 'MFSideMenu'
+
+#添加proto objcetive－c 文件
+pod 'MissGemProto', :path => "../proto"
+
+
+
+  target 'MissGemTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MissGemUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
