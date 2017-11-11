@@ -7,13 +7,13 @@ target 'MissGem' do
 
   # Pods for MissGem
 
-  pod 'gRPC', :podspec => "."
+#  pod 'gRPC', :podspec => "."
 
-pod 'SDWebImage'
-pod 'SSKeychain'
-pod 'MJRefresh'
-pod 'MBProgressHUD'
-pod 'IQKeyboardManager'
+pod 'SDWebImage', '~>4.2.2'
+pod 'SSKeychain', '~>1.4.1'
+pod 'MJRefresh', '~>3.1.15'
+pod 'MBProgressHUD', '~>1.0.0'
+pod 'IQKeyboardManager', '~>5.0.6'
 #pod 'FDFullsreenPopGesture'
 
 #pod 'PSTAlertController'
@@ -29,7 +29,7 @@ pod 'IQKeyboardManager'
 #pod 'SVProgressHUD'
 #pod 'Toast'
 #pod 'CocoaLumberjack'
-pod 'Reachability'
+pod 'Reachability', '~>3.2'
 #pod 'M80AttributedLabel'
 #pod 'FMDB'
 #pod 'RSKImageCropper'
@@ -40,7 +40,7 @@ pod 'Reachability'
 #pod 'MFSideMenu'
 
 #添加proto objcetive－c 文件
-pod 'MissGemProto', :path => "../proto"
+#pod 'MissGemProto', :path => "../proto"
 
 
 

@@ -25,6 +25,9 @@
 		022903F91FB4948400373981 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903F01FB4948400373981 /* NSString+MD5.m */; };
 		02CB27F81FB3477B0056C16D /* MissGemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB27F71FB3477B0056C16D /* MissGemTests.m */; };
 		02CB28031FB3477B0056C16D /* MissGemUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB28021FB3477B0056C16D /* MissGemUITests.m */; };
+		2481C8B8E705444B02133468 /* libPods-MissGemUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0C0A5EABD25FD6A83ACD2E /* libPods-MissGemUITests.a */; };
+		3018D86B2E26AFAC066F9F2B /* libPods-MissGemTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E3C2A920D7433E80B43AB32 /* libPods-MissGemTests.a */; };
+		646D1EEA0A6BEF84D5F76DDC /* libPods-MissGem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38001F5C34C0E55EF2248282 /* libPods-MissGem.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,15 @@
 		02CB27FE1FB3477B0056C16D /* MissGemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MissGemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CB28021FB3477B0056C16D /* MissGemUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissGemUITests.m; sourceTree = "<group>"; };
 		02CB28041FB3477B0056C16D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3165071ABBCA7DE70F93267A /* Pods-MissGemTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MissGemTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MissGemTests/Pods-MissGemTests.debug.xcconfig"; sourceTree = "<group>"; };
+		38001F5C34C0E55EF2248282 /* libPods-MissGem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MissGem.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE555DC45F7DD0A4DC1853C /* Pods-MissGemUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MissGemUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MissGemUITests/Pods-MissGemUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5321B5520EF3A3A556EDC158 /* Pods-MissGemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MissGemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MissGemTests/Pods-MissGemTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E3C2A920D7433E80B43AB32 /* libPods-MissGemTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MissGemTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		60E6764A19DE4E47C466B540 /* Pods-MissGem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MissGem.release.xcconfig"; path = "Pods/Target Support Files/Pods-MissGem/Pods-MissGem.release.xcconfig"; sourceTree = "<group>"; };
+		98826D23D2D241AE2473572B /* Pods-MissGemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MissGemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MissGemUITests/Pods-MissGemUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9B0C0A5EABD25FD6A83ACD2E /* libPods-MissGemUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MissGemUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7405C3A2E4ADCC2724B3BC0 /* Pods-MissGem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MissGem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MissGem/Pods-MissGem.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				646D1EEA0A6BEF84D5F76DDC /* libPods-MissGem.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3018D86B2E26AFAC066F9F2B /* libPods-MissGemTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2481C8B8E705444B02133468 /* libPods-MissGemUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +259,8 @@
 				02CB27F61FB3477B0056C16D /* MissGemTests */,
 				02CB28011FB3477B0056C16D /* MissGemUITests */,
 				02CB27D91FB3477B0056C16D /* Products */,
+				5D980C8A3C3FCE0685D90EEC /* Pods */,
+				7C9FC30EF48462A2D7522BB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -292,6 +309,29 @@
 			path = MissGemUITests;
 			sourceTree = "<group>";
 		};
+		5D980C8A3C3FCE0685D90EEC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7405C3A2E4ADCC2724B3BC0 /* Pods-MissGem.debug.xcconfig */,
+				60E6764A19DE4E47C466B540 /* Pods-MissGem.release.xcconfig */,
+				3165071ABBCA7DE70F93267A /* Pods-MissGemTests.debug.xcconfig */,
+				5321B5520EF3A3A556EDC158 /* Pods-MissGemTests.release.xcconfig */,
+				4DE555DC45F7DD0A4DC1853C /* Pods-MissGemUITests.debug.xcconfig */,
+				98826D23D2D241AE2473572B /* Pods-MissGemUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7C9FC30EF48462A2D7522BB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38001F5C34C0E55EF2248282 /* libPods-MissGem.a */,
+				5E3C2A920D7433E80B43AB32 /* libPods-MissGemTests.a */,
+				9B0C0A5EABD25FD6A83ACD2E /* libPods-MissGemUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -299,9 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02CB28071FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGem" */;
 			buildPhases = (
+				662F5FE416555C23F9934985 /* [CP] Check Pods Manifest.lock */,
 				02CB27D41FB3477B0056C16D /* Sources */,
 				02CB27D51FB3477B0056C16D /* Frameworks */,
 				02CB27D61FB3477B0056C16D /* Resources */,
+				3AFDD00799F316C7708739FC /* [CP] Embed Pods Frameworks */,
+				2A40A353322A835D2741B775 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -316,9 +359,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02CB280A1FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGemTests" */;
 			buildPhases = (
+				0DC77D6328098146C391EFD3 /* [CP] Check Pods Manifest.lock */,
 				02CB27EF1FB3477B0056C16D /* Sources */,
 				02CB27F01FB3477B0056C16D /* Frameworks */,
 				02CB27F11FB3477B0056C16D /* Resources */,
+				1714D57E744C9E656475C347 /* [CP] Embed Pods Frameworks */,
+				9C5AE303B5A89DB484E9FA50 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -334,9 +380,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02CB280D1FB3477B0056C16D /* Build configuration list for PBXNativeTarget "MissGemUITests" */;
 			buildPhases = (
+				90A8FE5E49F7C1EAAB8A9A62 /* [CP] Check Pods Manifest.lock */,
 				02CB27FA1FB3477B0056C16D /* Sources */,
 				02CB27FB1FB3477B0056C16D /* Frameworks */,
 				02CB27FC1FB3477B0056C16D /* Resources */,
+				8CBD392990BCD208CCD9C0BF /* [CP] Embed Pods Frameworks */,
+				E817AA81F7526932B131F16F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -420,6 +469,158 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DC77D6328098146C391EFD3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MissGemTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1714D57E744C9E656475C347 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MissGemTests/Pods-MissGemTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A40A353322A835D2741B775 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MissGem/Pods-MissGem-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MissGem/Pods-MissGem-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3AFDD00799F316C7708739FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MissGem/Pods-MissGem-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		662F5FE416555C23F9934985 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MissGem-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CBD392990BCD208CCD9C0BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MissGemUITests/Pods-MissGemUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90A8FE5E49F7C1EAAB8A9A62 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MissGemUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C5AE303B5A89DB484E9FA50 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MissGemTests/Pods-MissGemTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E817AA81F7526932B131F16F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MissGemUITests/Pods-MissGemUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		02CB27D41FB3477B0056C16D /* Sources */ = {
@@ -598,6 +799,7 @@
 		};
 		02CB28081FB3477B0056C16D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7405C3A2E4ADCC2724B3BC0 /* Pods-MissGem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -613,6 +815,7 @@
 		};
 		02CB28091FB3477B0056C16D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60E6764A19DE4E47C466B540 /* Pods-MissGem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -628,6 +831,7 @@
 		};
 		02CB280B1FB3477B0056C16D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3165071ABBCA7DE70F93267A /* Pods-MissGemTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -643,6 +847,7 @@
 		};
 		02CB280C1FB3477B0056C16D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5321B5520EF3A3A556EDC158 /* Pods-MissGemTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -658,6 +863,7 @@
 		};
 		02CB280E1FB3477B0056C16D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DE555DC45F7DD0A4DC1853C /* Pods-MissGemUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T73CJ3E649;
@@ -672,6 +878,7 @@
 		};
 		02CB280F1FB3477B0056C16D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98826D23D2D241AE2473572B /* Pods-MissGemUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T73CJ3E649;
