@@ -1,29 +1,47 @@
 PODS:
+  - IBAnimatable (5.0.0)
   - IQKeyboardManager (5.0.6)
+  - lottie-ios (2.1.4)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.15)
+  - RAMAnimatedTabBarController (3.0.0)
   - Reachability (3.2)
+  - Realm (3.0.2):
+    - Realm/Headers (= 3.0.2)
+  - Realm/Headers (3.0.2)
+  - SAMKeychain (1.5.3)
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
-  - SSKeychain (1.4.1)
+  - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
-  - IQKeyboardManager
-  - MBProgressHUD
-  - MJRefresh
-  - Reachability
-  - SDWebImage
-  - SSKeychain
+  - IBAnimatable
+  - IQKeyboardManager (~> 5.0.6)
+  - lottie-ios
+  - MBProgressHUD (~> 1.0.0)
+  - MJRefresh (~> 3.1.15)
+  - RAMAnimatedTabBarController
+  - Reachability (~> 3.2)
+  - Realm
+  - Realm/Headers
+  - SAMKeychain
+  - SDWebImage (~> 4.2.2)
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
+  IBAnimatable: aa2286a9cf8fb4ae2e1be85c5287ae56143b024f
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
+  lottie-ios: 94fa2d82547ce3adf1e61157653ba99999fd279f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
+  RAMAnimatedTabBarController: 6d0638ad14db4939006e8c58933e05bde93e66f6
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
-  SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: 3086f78ab38a9269819eaa339afb8c9fa50db860
+PODFILE CHECKSUM: 25f0e9c4dc450f7d986ecb28e0e8496d5e3af5d8
 
 COCOAPODS: 1.3.1

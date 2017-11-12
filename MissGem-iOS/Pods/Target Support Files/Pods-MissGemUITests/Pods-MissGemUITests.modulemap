@@ -1,0 +1,6 @@
+framework module Pods_MissGemUITests {
+  umbrella header "Pods-MissGemUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
