@@ -23,7 +23,6 @@
 		022903F71FB4948400373981 /* Outgoing+Weixin.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903EA1FB4948400373981 /* Outgoing+Weixin.m */; };
 		022903F81FB4948400373981 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903ED1FB4948400373981 /* NSData+AES256.m */; };
 		022903F91FB4948400373981 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903F01FB4948400373981 /* NSString+MD5.m */; };
-		023FC4B81FB8260E0008A94C /* SwiftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023FC4B71FB8260E0008A94C /* SwiftTableViewCell.swift */; };
 		02CB27F81FB3477B0056C16D /* MissGemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB27F71FB3477B0056C16D /* MissGemTests.m */; };
 		02CB28031FB3477B0056C16D /* MissGemUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB28021FB3477B0056C16D /* MissGemUITests.m */; };
 		1749CC14ED36F0BB2FBB741B /* Pods_MissGemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5AEB88F6455EC2B2A33A06 /* Pods_MissGemTests.framework */; };
@@ -77,7 +76,6 @@
 		022903EE1FB4948400373981 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		022903EF1FB4948400373981 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
 		022903F01FB4948400373981 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
-		023FC4B71FB8260E0008A94C /* SwiftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTableViewCell.swift; sourceTree = "<group>"; };
 		023FC4B91FB826F60008A94C /* MissGem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MissGem-Bridging-Header.h"; sourceTree = "<group>"; };
 		02CB27D81FB3477B0056C16D /* MissGem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissGem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CB27F31FB3477B0056C16D /* MissGemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MissGemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,7 +180,6 @@
 			children = (
 				022903B81FB4900D00373981 /* GEMHomeViewController.h */,
 				022903B71FB4900D00373981 /* GEMHomeViewController.m */,
-				023FC4B71FB8260E0008A94C /* SwiftTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -662,7 +659,6 @@
 				022903BC1FB4900E00373981 /* GEMHomeViewController.m in Sources */,
 				022903F61FB4948400373981 /* Outgoing+BaoPaiement.m in Sources */,
 				022903BF1FB4903500373981 /* GEMColumnTableViewCell.m in Sources */,
-				023FC4B81FB8260E0008A94C /* SwiftTableViewCell.swift in Sources */,
 				022903F91FB4948400373981 /* NSString+MD5.m in Sources */,
 				022903F31FB4948400373981 /* Outgoing+Renren.m in Sources */,
 				022903F41FB4948400373981 /* Outgoing+Weibo.m in Sources */,
@@ -872,7 +868,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3165071ABBCA7DE70F93267A /* Pods-MissGemTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T73CJ3E649;
@@ -889,7 +884,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5321B5520EF3A3A556EDC158 /* Pods-MissGemTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T73CJ3E649;
@@ -906,7 +900,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4DE555DC45F7DD0A4DC1853C /* Pods-MissGemUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T73CJ3E649;
 				INFOPLIST_FILE = MissGemUITests/Info.plist;
@@ -922,7 +915,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98826D23D2D241AE2473572B /* Pods-MissGemUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T73CJ3E649;
 				INFOPLIST_FILE = MissGemUITests/Info.plist;
