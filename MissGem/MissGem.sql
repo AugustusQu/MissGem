@@ -8,27 +8,13 @@
  Source Database       : MissGem
 
  Target Server Type    : MySQL
- Target Server Version : 50173
+ Target Server Version : 5.7.20
  File Encoding         : utf-8
 
  Date: 08/11/2017 16:18:47 PM
 */
 
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
---  Table structure for `add_friend_and_store`
--- ----------------------------
-DROP TABLE IF EXISTS `add_friend_and_store`;
-CREATE TABLE `add_friend_and_store` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `request_user_id` bigint(20) NOT NULL COMMENT '请求方ID（请求方可以是买家、卖家）',
-  `receive_user_id` bigint(20) NOT NULL COMMENT '接收方ID（接收方可以是买家、卖家）',
-  `sharing_friends` varchar(1024) DEFAULT NULL COMMENT '格式：[[<中间好友ID>, <请求方跟中间好友的关系枚举值>, <中间好友跟待添加某人的关系枚举值>]]，例如有2个好友：[[1001, 1, 2],[3002, 3,2]]',
-  `why_add` varchar(255) DEFAULT NULL COMMENT '添加原因，特别是当没有任何中间好友时的补充说明',
-  `op_ts` datetime NOT NULL COMMENT '操作时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `app_install_info`
@@ -43,10 +29,10 @@ CREATE TABLE `app_install_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `buyer`
+--  Table structure for `renter`
 -- ----------------------------
-DROP TABLE IF EXISTS `buyer`;
-CREATE TABLE `buyer` (
+DROP TABLE IF EXISTS `renter`;
+CREATE TABLE `renter` (
   `id` bigint(20) NOT NULL,
   `nickname` varchar(255) DEFAULT NULL COMMENT '昵称',
   `photo` varchar(255) DEFAULT NULL COMMENT '头像名称',
@@ -60,30 +46,29 @@ CREATE TABLE `buyer` (
 
 
 -- ----------------------------
---  Table structure for `buyer_favorite`
+--  Table structure for `renter_favorite`
 -- ----------------------------
-DROP TABLE IF EXISTS `buyer_favorite`;
-CREATE TABLE `buyer_favorite` (
+DROP TABLE IF EXISTS `renter_favorite`;
+CREATE TABLE `renter_favorite` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `buyer_id` bigint(20) NOT NULL COMMENT '买家ID',
+  `renter_id` bigint(20) NOT NULL COMMENT '租客ID',
   `product_id` bigint(20) NOT NULL COMMENT '商品ID',
   `op_time` datetime NOT NULL COMMENT '收藏时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `cart`
+--  Table structure for `jewel_box`
 -- ----------------------------
-DROP TABLE IF EXISTS `cart`;
-CREATE TABLE `cart` (
+DROP TABLE IF EXISTS `jewel_box`;
+CREATE TABLE `jewel_box` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `buyer_id` bigint(20) DEFAULT NULL COMMENT '买家ID',
+  `renter_id` bigint(20) DEFAULT NULL COMMENT '租客ID',
   `product_id` bigint(20) DEFAULT NULL COMMENT '产品ID',
   `product_cnt` int(11) DEFAULT NULL COMMENT '产品数量',
-  `seller_id` bigint(20) DEFAULT NULL COMMENT '卖家ID',
-  `seller_nickname` varchar(255) DEFAULT NULL COMMENT '卖家昵称',
-  `seller_photo` varchar(255) DEFAULT NULL COMMENT '卖家头像',
-  `is_group_buy` varchar(255) DEFAULT NULL COMMENT '是否团购',
+  `merchant_id` bigint(20) DEFAULT NULL COMMENT '商家ID',
+  `merchant_nickname` varchar(255) DEFAULT NULL COMMENT '商家昵称',
+  `merchant_photo` varchar(255) DEFAULT NULL COMMENT '商家头像',
   `add_time` datetime DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -106,8 +91,8 @@ CREATE TABLE `login_mobile_verify_code` (
 DROP TABLE IF EXISTS `message_notification`;
 CREATE TABLE `message_notification` (
   `id` bigint(20) NOT NULL,
-  `buyer_id` bigint(20) DEFAULT NULL COMMENT '买家ID',
-  `seller_id` bigint(20) DEFAULT NULL COMMENT '卖家ID',
+  `renter_id` bigint(20) DEFAULT NULL COMMENT '租客ID',
+  `merchant_id` bigint(20) DEFAULT NULL COMMENT '商家ID',
   `notification_type` tinyint(4) DEFAULT NULL COMMENT '物流助手、平台活动、交易消息、交易返利',
   `product_id` bigint(20) DEFAULT NULL COMMENT '产品ID',
   `order_id` bigint(20) DEFAULT NULL COMMENT '订单ID',
@@ -123,8 +108,8 @@ CREATE TABLE `message_notification` (
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单ID',
-  `buyer_id` bigint(20) DEFAULT NULL COMMENT '买家ID',
-  `seller_id` bigint(20) DEFAULT NULL COMMENT '卖家ID',
+  `renter_id` bigint(20) DEFAULT NULL COMMENT '租客ID',
+  `merchant_id` bigint(20) DEFAULT NULL COMMENT '商家ID',
   `store_name` varchar(255) DEFAULT NULL COMMENT '店铺名称',
   `product_id` bigint(20) DEFAULT NULL COMMENT '产品ID',
   `product_pic` varchar(255) DEFAULT NULL COMMENT '产品图片，1张',
@@ -155,23 +140,39 @@ CREATE TABLE `order` (
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '产品ID',
-  `seller_id` bigint(20) DEFAULT NULL COMMENT '卖家ID',
+  `merchant_id` bigint(20) DEFAULT NULL COMMENT '商家ID',
   `product_intro` varchar(255) DEFAULT NULL COMMENT '产品概要描述',
   `product_pic` varchar(255) DEFAULT NULL COMMENT '产品图片，最多9张，格式：[<图片1>,<图片2>,...]',
-  `favorite_num` int(11) DEFAULT NULL COMMENT '收藏数',
-  `sales_num` int(11) DEFAULT NULL COMMENT '销量数',
-  `good_review_num` int(11) DEFAULT NULL COMMENT '好评数',
-  `price` int(11) DEFAULT NULL COMMENT '零售价格，仅显示给成员买家，非成员不显示。货币单位：分',
-  `promotion_price` int(11) DEFAULT NULL,
-  `group_buying_price` int(11) DEFAULT NULL,
-  `spike_price` int(11) DEFAULT NULL,
+  `market_price` int(11) DEFAULT NULL COMMENT '市场参考价格。货币单位：分',
+  `price` int(11) DEFAULT NULL COMMENT '日租价格/参考价格。货币单位：分',
+  `promotion_price` int(11) DEFAULT NULL  COMMENT '促销日租价格。货币单位：分',
+  `size_id` bigint(20) DEFAULT NULL COMMENT '商品尺码规格ID',
+  `my_size_id` bigint(20) DEFAULT NULL COMMENT '我的尺码规格ID',
+  `lease_inception` datetime DEFAULT NULL COMMENT '起租日',
+  `appointment_return_time` datetime DEFAULT NULL COMMENT '预约返还时间',
+  `style_info` varchar(255) DEFAULT NULL COMMENT '商品风格类型信息',
   `manufacturer` varchar(255) DEFAULT NULL COMMENT '生产商信息',
+  `color` varchar(255) DEFAULT NULL COMMENT '颜色',
+  `material_info` varchar(255) DEFAULT NULL COMMENT '材质信息',
   `manufacturer_logo` varchar(255) DEFAULT NULL COMMENT '生产商Logo',
-  `product_tag` varchar(255) DEFAULT NULL COMMENT '热销1、新品2',
+  `product_tag` varchar(255) DEFAULT NULL COMMENT '合租商品1、单品2',
   `add_time` datetime DEFAULT NULL COMMENT '上架时间',
   `valid` bit(1) DEFAULT NULL COMMENT '是否下架',
+  `support_installment_payment`  bit(1) DEFAULT NULL COMMENT '是否支持分期付款',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+--  Table structure for `size`
+-- ----------------------------
+DROP TABLE IF EXISTS `size`;
+CREATE TABLE `size` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '尺码ID',
+  `product_info` varchar(255) DEFAULT NULL COMMENT '尺码信息描述',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
 --  Table structure for `product_comment`
@@ -180,8 +181,8 @@ DROP TABLE IF EXISTS `product_comment`;
 CREATE TABLE `product_comment` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `product_id` bigint(20) NOT NULL,
-  `star_num` varchar(255) DEFAULT NULL COMMENT '星级打分1-5，仅允许成交买家填写此项',
-  `user_id` bigint(20) DEFAULT NULL COMMENT '发出评论的用户ID，仅允许成功交易买家、卖家',
+  `star_num` varchar(255) DEFAULT NULL COMMENT '星级打分1-5，仅允许成交租客填写此项',
+  `user_id` bigint(20) DEFAULT NULL COMMENT '发出评论的用户ID，仅允许成功交易租客、商家',
   `user_nickname` varchar(255) DEFAULT NULL COMMENT '发出评论的用户昵称',
   `comment` varchar(255) DEFAULT NULL COMMENT '评论',
   `replied_user_id` int(11) DEFAULT NULL COMMENT '被回复的用户ID',
@@ -191,19 +192,18 @@ CREATE TABLE `product_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `seller`
+--  Table structure for `merchant`
 -- ----------------------------
-DROP TABLE IF EXISTS `seller`;
-CREATE TABLE `seller` (
-  `id` bigint(20) NOT NULL COMMENT '卖家ID',
-  `nickname` varchar(255) DEFAULT NULL COMMENT '卖家昵称',
+DROP TABLE IF EXISTS `merchant`;
+CREATE TABLE `merchant` (
+  `id` bigint(20) NOT NULL COMMENT '商家ID',
   `store_id` int(11) DEFAULT NULL COMMENT '店铺ID',
   `store_name` varchar(255) DEFAULT NULL COMMENT '店铺名称',
-  `photo` varchar(255) DEFAULT NULL COMMENT '卖家/店铺头像url (店主和店铺的头像相同)',
+  `photo` varchar(255) DEFAULT NULL COMMENT '商家/店铺头像url (店主和店铺的头像相同)',
   `product_num` int(11) DEFAULT NULL COMMENT '单品数',
   `good_review_num` int(11) DEFAULT NULL COMMENT '好评数',
   `transaction_num` int(11) DEFAULT NULL COMMENT '交易数',
-  `seller_store_intro` varchar(255) DEFAULT NULL COMMENT '卖家店铺简介',
+  `merchant_store_intro` varchar(255) DEFAULT NULL COMMENT '商家店铺简介',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
