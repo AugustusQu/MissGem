@@ -14,7 +14,6 @@
 		022903B11FB4886000373981 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903AB1FB4886000373981 /* AppDelegate.m */; };
 		022903B21FB4886000373981 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 022903AC1FB4886000373981 /* Info.plist */; };
 		022903BC1FB4900E00373981 /* GEMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903B71FB4900D00373981 /* GEMHomeViewController.m */; };
-		022903BF1FB4903500373981 /* GEMColumnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903BE1FB4903500373981 /* GEMColumnTableViewCell.m */; };
 		022903F21FB4948400373981 /* Outgoing+QQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903DF1FB4948400373981 /* Outgoing+QQ.m */; };
 		022903F31FB4948400373981 /* Outgoing+Renren.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903E01FB4948400373981 /* Outgoing+Renren.m */; };
 		022903F41FB4948400373981 /* Outgoing+Weibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903E21FB4948400373981 /* Outgoing+Weibo.m */; };
@@ -23,8 +22,15 @@
 		022903F71FB4948400373981 /* Outgoing+Weixin.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903EA1FB4948400373981 /* Outgoing+Weixin.m */; };
 		022903F81FB4948400373981 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903ED1FB4948400373981 /* NSData+AES256.m */; };
 		022903F91FB4948400373981 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 022903F01FB4948400373981 /* NSString+MD5.m */; };
+		029F8F3D1FB9B4E800B0A5A4 /* GEMAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F8F3C1FB9B4E800B0A5A4 /* GEMAuthentication.m */; };
+		029F903A1FB9BBD600B0A5A4 /* GEMNotificationString.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F90391FB9BBD600B0A5A4 /* GEMNotificationString.m */; };
 		02CB27F81FB3477B0056C16D /* MissGemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB27F71FB3477B0056C16D /* MissGemTests.m */; };
 		02CB28031FB3477B0056C16D /* MissGemUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB28021FB3477B0056C16D /* MissGemUITests.m */; };
+		02E248D81FB99C3800ECB2AB /* GEMColumnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E248D61FB99C3800ECB2AB /* GEMColumnTableViewCell.m */; };
+		02E248E31FB99DBC00ECB2AB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E248E21FB99DBC00ECB2AB /* Home.storyboard */; };
+		02E248E51FB99DCD00ECB2AB /* SelectGem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E248E41FB99DCD00ECB2AB /* SelectGem.storyboard */; };
+		02E248E71FB99DDB00ECB2AB /* UserProfiles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E248E61FB99DDB00ECB2AB /* UserProfiles.storyboard */; };
+		02E248E91FB99DE600ECB2AB /* WishList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E248E81FB99DE600ECB2AB /* WishList.storyboard */; };
 		1749CC14ED36F0BB2FBB741B /* Pods_MissGemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5AEB88F6455EC2B2A33A06 /* Pods_MissGemTests.framework */; };
 		313FBA3272EAAC81B1E90E07 /* Pods_MissGem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B4AC95A3B6345B7C5C4494 /* Pods_MissGem.framework */; };
 		A1503FF1EBF0180D1EC5AF83 /* Pods_MissGemUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F25AD5E0DAD67F10B8674FA /* Pods_MissGemUITests.framework */; };
@@ -57,8 +63,6 @@
 		022903AC1FB4886000373981 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		022903B71FB4900D00373981 /* GEMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEMHomeViewController.m; sourceTree = "<group>"; };
 		022903B81FB4900D00373981 /* GEMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEMHomeViewController.h; sourceTree = "<group>"; };
-		022903BD1FB4903500373981 /* GEMColumnTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEMColumnTableViewCell.h; sourceTree = "<group>"; };
-		022903BE1FB4903500373981 /* GEMColumnTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEMColumnTableViewCell.m; sourceTree = "<group>"; };
 		022903DF1FB4948400373981 /* Outgoing+QQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Outgoing+QQ.m"; sourceTree = "<group>"; };
 		022903E01FB4948400373981 /* Outgoing+Renren.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Outgoing+Renren.m"; sourceTree = "<group>"; };
 		022903E11FB4948400373981 /* Outgoing+Weixin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Outgoing+Weixin.h"; sourceTree = "<group>"; };
@@ -77,6 +81,10 @@
 		022903EF1FB4948400373981 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
 		022903F01FB4948400373981 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		023FC4B91FB826F60008A94C /* MissGem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MissGem-Bridging-Header.h"; sourceTree = "<group>"; };
+		029F8F3B1FB9B4E800B0A5A4 /* GEMAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEMAuthentication.h; sourceTree = "<group>"; };
+		029F8F3C1FB9B4E800B0A5A4 /* GEMAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEMAuthentication.m; sourceTree = "<group>"; };
+		029F90381FB9BBD600B0A5A4 /* GEMNotificationString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEMNotificationString.h; sourceTree = "<group>"; };
+		029F90391FB9BBD600B0A5A4 /* GEMNotificationString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEMNotificationString.m; sourceTree = "<group>"; };
 		02CB27D81FB3477B0056C16D /* MissGem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MissGem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CB27F31FB3477B0056C16D /* MissGemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MissGemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CB27F71FB3477B0056C16D /* MissGemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissGemTests.m; sourceTree = "<group>"; };
@@ -84,6 +92,12 @@
 		02CB27FE1FB3477B0056C16D /* MissGemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MissGemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CB28021FB3477B0056C16D /* MissGemUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissGemUITests.m; sourceTree = "<group>"; };
 		02CB28041FB3477B0056C16D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02E248D61FB99C3800ECB2AB /* GEMColumnTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEMColumnTableViewCell.m; sourceTree = "<group>"; };
+		02E248D71FB99C3800ECB2AB /* GEMColumnTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEMColumnTableViewCell.h; sourceTree = "<group>"; };
+		02E248E21FB99DBC00ECB2AB /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		02E248E41FB99DCD00ECB2AB /* SelectGem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectGem.storyboard; sourceTree = "<group>"; };
+		02E248E61FB99DDB00ECB2AB /* UserProfiles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfiles.storyboard; sourceTree = "<group>"; };
+		02E248E81FB99DE600ECB2AB /* WishList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WishList.storyboard; sourceTree = "<group>"; };
 		3165071ABBCA7DE70F93267A /* Pods-MissGemTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MissGemTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MissGemTests/Pods-MissGemTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32B4AC95A3B6345B7C5C4494 /* Pods_MissGem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MissGem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE555DC45F7DD0A4DC1853C /* Pods-MissGemUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MissGemUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MissGemUITests/Pods-MissGemUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +140,9 @@
 		0229039E1FB4882000373981 /* WishList */ = {
 			isa = PBXGroup;
 			children = (
+				02E248DF1FB99C9F00ECB2AB /* Controller */,
+				02E248E11FB99C9F00ECB2AB /* Model */,
+				02E248E01FB99C9F00ECB2AB /* View */,
 			);
 			path = WishList;
 			sourceTree = "<group>";
@@ -135,7 +152,7 @@
 			children = (
 				022903B61FB4900D00373981 /* Controller */,
 				022903B91FB4900D00373981 /* Model */,
-				022903BA1FB4900D00373981 /* view */,
+				02E248D41FB99C3800ECB2AB /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -143,6 +160,9 @@
 		022903A01FB4882000373981 /* UserProfiles */ = {
 			isa = PBXGroup;
 			children = (
+				02E248DC1FB99C9300ECB2AB /* Controller */,
+				02E248DD1FB99C9300ECB2AB /* Model */,
+				02E248DE1FB99C9300ECB2AB /* View */,
 			);
 			path = UserProfiles;
 			sourceTree = "<group>";
@@ -150,6 +170,7 @@
 		022903A11FB4882100373981 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				029F8F3E1FB9B8CE00B0A5A4 /* Notification */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -157,6 +178,9 @@
 		022903A21FB4882100373981 /* SelectGem */ = {
 			isa = PBXGroup;
 			children = (
+				02E248D91FB99C8500ECB2AB /* Controller */,
+				02E248DB1FB99C8500ECB2AB /* Model */,
+				02E248DA1FB99C8500ECB2AB /* View */,
 			);
 			path = SelectGem;
 			sourceTree = "<group>";
@@ -189,23 +213,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		022903BA1FB4900D00373981 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				022903BB1FB4900D00373981 /* GEMColumn */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		022903BB1FB4900D00373981 /* GEMColumn */ = {
-			isa = PBXGroup;
-			children = (
-				022903BD1FB4903500373981 /* GEMColumnTableViewCell.h */,
-				022903BE1FB4903500373981 /* GEMColumnTableViewCell.m */,
-			);
-			path = GEMColumn;
 			sourceTree = "<group>";
 		};
 		022903DD1FB4948400373981 /* ThirdParty */ = {
@@ -252,6 +259,24 @@
 			children = (
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		029F8F3A1FB9B4E800B0A5A4 /* GEMAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				029F8F3B1FB9B4E800B0A5A4 /* GEMAuthentication.h */,
+				029F8F3C1FB9B4E800B0A5A4 /* GEMAuthentication.m */,
+			);
+			path = GEMAuthentication;
+			sourceTree = "<group>";
+		};
+		029F8F3E1FB9B8CE00B0A5A4 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				029F90381FB9BBD600B0A5A4 /* GEMNotificationString.h */,
+				029F90391FB9BBD600B0A5A4 /* GEMNotificationString.m */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		02CB27CF1FB3477B0056C16D = {
@@ -309,6 +334,91 @@
 				02CB28041FB3477B0056C16D /* Info.plist */,
 			);
 			path = MissGemUITests;
+			sourceTree = "<group>";
+		};
+		02E248D41FB99C3800ECB2AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02E248E21FB99DBC00ECB2AB /* Home.storyboard */,
+				02E248D51FB99C3800ECB2AB /* GEMColumn */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02E248D51FB99C3800ECB2AB /* GEMColumn */ = {
+			isa = PBXGroup;
+			children = (
+				02E248D71FB99C3800ECB2AB /* GEMColumnTableViewCell.h */,
+				02E248D61FB99C3800ECB2AB /* GEMColumnTableViewCell.m */,
+			);
+			path = GEMColumn;
+			sourceTree = "<group>";
+		};
+		02E248D91FB99C8500ECB2AB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		02E248DA1FB99C8500ECB2AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02E248E41FB99DCD00ECB2AB /* SelectGem.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02E248DB1FB99C8500ECB2AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02E248DC1FB99C9300ECB2AB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		02E248DD1FB99C9300ECB2AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				029F8F3A1FB9B4E800B0A5A4 /* GEMAuthentication */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02E248DE1FB99C9300ECB2AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02E248E61FB99DDB00ECB2AB /* UserProfiles.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02E248DF1FB99C9F00ECB2AB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		02E248E01FB99C9F00ECB2AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02E248E81FB99DE600ECB2AB /* WishList.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02E248E11FB99C9F00ECB2AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5D980C8A3C3FCE0685D90EEC /* Pods */ = {
@@ -451,8 +561,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				022903AD1FB4886000373981 /* Assets.xcassets in Resources */,
+				02E248E91FB99DE600ECB2AB /* WishList.storyboard in Resources */,
+				02E248E71FB99DDB00ECB2AB /* UserProfiles.storyboard in Resources */,
+				02E248E31FB99DBC00ECB2AB /* Home.storyboard in Resources */,
 				022903AF1FB4886000373981 /* Main.storyboard in Resources */,
 				022903AE1FB4886000373981 /* LaunchScreen.storyboard in Resources */,
+				02E248E51FB99DCD00ECB2AB /* SelectGem.storyboard in Resources */,
 				022903B21FB4886000373981 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,14 +767,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029F8F3D1FB9B4E800B0A5A4 /* GEMAuthentication.m in Sources */,
 				022903F81FB4948400373981 /* NSData+AES256.m in Sources */,
+				02E248D81FB99C3800ECB2AB /* GEMColumnTableViewCell.m in Sources */,
 				022903F21FB4948400373981 /* Outgoing+QQ.m in Sources */,
 				022903F51FB4948400373981 /* Outgoing.m in Sources */,
 				022903BC1FB4900E00373981 /* GEMHomeViewController.m in Sources */,
 				022903F61FB4948400373981 /* Outgoing+BaoPaiement.m in Sources */,
-				022903BF1FB4903500373981 /* GEMColumnTableViewCell.m in Sources */,
 				022903F91FB4948400373981 /* NSString+MD5.m in Sources */,
 				022903F31FB4948400373981 /* Outgoing+Renren.m in Sources */,
+				029F903A1FB9BBD600B0A5A4 /* GEMNotificationString.m in Sources */,
 				022903F41FB4948400373981 /* Outgoing+Weibo.m in Sources */,
 				022903F71FB4948400373981 /* Outgoing+Weixin.m in Sources */,
 				022903B11FB4886000373981 /* AppDelegate.m in Sources */,
