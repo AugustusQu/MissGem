@@ -1,0 +1,342 @@
+syntax = "proto3";
+package com.turtle.home;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "BuyerHomeServiceProto";
+option objc_class_prefix = "TID";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForBuyerHomeService{
+	SUCCESS = 0;//成功
+	CATEGORY_NAME_INVALID = 11001;//名字非法，可能是长度也可能是其他，以后定规则了也可以再细化
+	CATEGORY_NAME_REPEATED = 11002;//名字重复
+	CATEGORY_NOT_FOUND = 11003;//未找到搜藏夹数据
+	ITEM_NOT_FOUND = 11004;//未找到商品数据
+	ITEM_FAVORITE_ALREADY = 11005;//该商品已经收藏
+	ITEM_FAVORITE_NOT_FOUND = 11006;//未找到该收藏
+	SELLER_NOT_FOUND = 11007;//未找到卖家数据
+	STORE_NOT_FOUND = 11008;//店铺未找到
+	FAILED = 11009;//失败
+	INVENTORY_LESS = 11010;//团购库存不够
+}
+
+enum Filter {
+	EVERYTHING = 0; // 全部
+	STORE = 1; // 按店铺
+	LATEST_ADDED = 2; //最新添加
+	SALES = 3; // 总销量
+	FAVORITES = 4; // 总收藏量
+	GOOD_REVIEW = 5; // 总好评数
+}
+	
+// 获得首页店铺的商品列表
+message GetSelectionListReq {
+    //int64 user_id = 1;  // 用户ID
+    Filter filter = 2; // 过滤条件
+    int32 page_num = 3; // 所请求的页码，从1开始
+}
+
+message GetSelectionListResp {
+    repeated com.turtle.sharingmsgdef.ItemInfo item_info = 1; // 商品概要信息
+	repeated com.turtle.sharingmsgdef.ItemCollectedSimpleInfo item_collected_info = 2;
+	Filter filter = 3; // 过滤条件
+	int32 page_num = 4;
+	int32 page_all = 5;
+}
+
+message GetStoreCoverListReq {
+}
+message GetStoreCoverListResp {
+	repeated StoreCoverInfo item_card_info = 1;//商品卡片信息
+
+}
+
+message StoreCoverInfo{
+	com.turtle.sharingmsgdef.StoreSimpleInfo store_simple_info = 1;
+	repeated ItemWithGroupBuy item_and_group_buy = 2;
+	com.turtle.sharingmsgdef.UserSimpleInfo seller = 3; // 卖家
+	int64 update_time = 4;//上次更新时间
+	repeated CarouselMessage carousel_message = 6;//轮播消息
+	int32 familiarity = 7;//亲密度
+}
+
+message CarouselMessage {//首页轮播
+	com.turtle.sharingmsgdef.CarouselType carousel_type = 1;
+	string carousel_message = 2;//轮播消息
+	int64 item_id = 3;//关联商品标识
+}
+
+message ItemWithGroupBuy{
+	com.turtle.sharingmsgdef.ItemInfo item_info = 1;
+	GroupBuyInfo group_buy_info = 2;//拼团信息
+}
+
+//获取商品详情
+message GetItemDetailReq {
+    int64 item_id = 1; // 商品ID
+}
+
+message GetItemDetailResp {
+	ErrorCodeForBuyerHomeService error_code = 1;
+	com.turtle.sharingmsgdef.ItemInfo item_info = 2; // 商品概要信息
+    com.turtle.sharingmsgdef.UserSimpleInfo seller = 3; // 卖家
+	com.turtle.sharingmsgdef.StoreSimpleInfo store = 4; // 店铺
+	int32 people_also_bought_cnt = 5; // TA们也购买了
+	repeated com.turtle.sharingmsgdef.UserSimpleInfo people_also_bought = 6; //也购买了的人们
+		message ItemYouMayLike {
+		int64 item_id = 1; //商品ID
+		string item_pic_url = 2; //商品图标URL
+	}
+	repeated ItemYouMayLike item_you_may_like = 7; // 猜你喜欢
+	repeated com.turtle.sharingmsgdef.ItemComment comments = 8; // 商品评论，来自我的好友和我
+	int32 comment_cnt = 9;//评价总数
+	bool is_favorite_store = 10;//是否关注了该店铺
+	repeated com.turtle.sharingmsgdef.ItemAttributeInfo attribute = 11;//商品属性
+	bool is_group_buy_supported = 12;//该商品是否支持拼团
+	GroupBuyInfo group_buy_info = 13;//拼团信息
+}
+
+message GetStoreDetailReq {
+    int64 store_id = 1; // 店铺ID
+}
+
+//获取商品详情（代理的商品）
+message GetItemDetailWithAgentReq{
+	int64 item_id = 1;
+}
+message GetItemDetailWithAgentResp{
+	ErrorCodeForBuyerHomeService error_code = 1;
+	GetItemDetailResp item_detail = 2;
+	com.turtle.sharingmsgdef.ItemAgentLevelForUser item_agent = 3;
+}
+
+message GroupBuyInfo {
+	//int64 primary_key = 1;
+	int32 group_buy_people_cnt_short = 2;//拼团还差几人
+	int32 group_buy_price = 3;//拼团价格
+	repeated com.turtle.sharingmsgdef.UserSimpleInfo group_buy_user_info = 4;//拼团人信息,第一个为团长
+	int64 group_buy_begin_time = 5;//开团时间
+	int64 group_buy_end_time = 6;//拼团结束时间
+	//string group_buy_slogon = 7;//拼团口号，比如：还差x人，盼你如南方人盼暖气～
+	com.turtle.sharingmsgdef.Int64Value not_paid_order_id = 8;//未支付的团购订单id
+}
+
+message GetStoreDetailResp {
+	ErrorCodeForBuyerHomeService error_code = 1;
+	com.turtle.sharingmsgdef.StoreSimpleInfo store_simple_info = 2;
+    string seller_nickname = 4; //卖家昵称
+    com.turtle.sharingmsgdef.StoreFavoriteStatus favorite_status = 5; // 是否关注
+	com.turtle.sharingmsgdef.RecommendStatus recommend_status = 6;//推荐状态
+    int32 store_member_num = 7; //店铺成员数
+	int32 store_recommend_num = 8;//店铺被推荐次数
+    repeated com.turtle.sharingmsgdef.StoreCustmerSimpleInfo store_customers = 10;//我的好友和该店店铺成员交集
+    //repeated com.turtle.sharingmsgdef.ItemCollectedSimpleInfo items_hot = 11; // 热销商品
+    repeated com.turtle.sharingmsgdef.ItemCollectedSimpleInfo items_new = 12;  // 上新商品
+	repeated com.turtle.sharingmsgdef.ItemCollectedSimpleInfo items_all = 13;  // 所有商品
+	bool is_friend = 14;//和店主是否是好友（只在未关注该店铺的情况下发送此数据）
+}
+
+message GetFavoriteCategoriesReq {
+	int64 user_id = 1;  // 用户ID
+}
+
+message GetFavoriteCategoriesResp {
+        ErrorCodeForBuyerHomeService errorCode = 1;
+        repeated com.turtle.sharingmsgdef.FavoriteCategoryInfo favoriteCategory = 2;
+}
+
+message CreateFavoriteCategoryReq {
+    int64 user_id = 1;  // 用户ID
+    string favorite_category_name = 2; // 收藏夹名称
+    int32 ordering = 3; //次序
+	
+}
+
+message CreateFavoriteCategoryResp {
+	ErrorCodeForBuyerHomeService errorCode = 1;
+	com.turtle.sharingmsgdef.FavoriteCategoryInfo favoriteCategory = 2;
+}
+
+message ModifyFavoriteCategoryReq {
+    int64 user_id = 1;  // 用户ID
+	int64 category_id = 2;//收藏夹id
+    string favorite_category_name = 3; // 收藏夹名称
+    int32 ordering = 4; //次序
+}
+
+message ModifyFavoriteCategoryResp {
+	ErrorCodeForBuyerHomeService errorCode = 1;
+}
+
+message RemoveFavoriteCategoryReq {
+    int64 user_id = 1;  // 用户ID
+    int64 favorite_category_id = 2; // 收藏夹ID
+}
+
+message RemoveFavoriteCategoryResp {
+	ErrorCodeForBuyerHomeService errorCode = 1;
+	int64 favorite_category_id = 2; // 收藏夹ID
+}
+
+
+message AddItemToFavoriteReq {
+    int64 item_id = 1;  // 商品ID
+    int64 favorite_category_id = 2; // 收藏夹ID
+}
+
+message AddItemToFavoriteResp {
+    ErrorCodeForBuyerHomeService error_code = 1;// [default = 0]; //默认为0，表示操作成功
+    com.turtle.sharingmsgdef.FavoriteCategoryInfo favoriteCategory = 2;
+    int32 favorite_num = 3; // 收藏数
+	int64 item_id = 4;//商品id
+}
+
+
+message RemoveItemFromFavoriteReq {
+    int64 item_id = 1;  // 商品ID
+}
+
+message RemoveItemFromFavoriteResp {
+    ErrorCodeForBuyerHomeService error_code = 1;// [default = 0]; //默认为0，表示操作成功
+    com.turtle.sharingmsgdef.FavoriteCategoryInfo favoriteCategory = 2;
+    int32 favorite_num = 3; // 收藏数
+	int64 item_id = 4;  // 商品ID
+}
+
+message ItemCommentForAdd{
+	int64 item_id = 1;  // 商品ID
+    string comment = 2; // 文字评论
+	int32 item_star = 5;//商品星级
+	int32 service_star = 6;//服务星级
+	int32 logistics_star = 7;//物流星级
+}
+
+//给单个商品添加评论
+message AddCommentForItemReq {
+    ItemCommentForAdd comment = 1;
+}
+
+message AddCommentForItemResp {
+    ErrorCodeForBuyerHomeService error_code = 1;// [default = 0]; //默认为0，表示操作成功
+    int64 item_id = 2;//商品id
+	repeated com.turtle.sharingmsgdef.ItemComment comments = 3; // 商品评论(只有商品详情页的评论发生变化时，才有此数据)
+}
+
+//给多个商品添加评论
+message AddCommentForOrderReq {
+    repeated ItemCommentForAdd comment = 1;
+	int64 order_id = 2;//订单id
+}
+
+message AddCommentForOrderResp {
+    ErrorCodeForBuyerHomeService error_code = 1;// [default = 0]; //默认为0，表示操作成功
+    com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 2;//订单新的状态
+}
+
+//查询商品评价
+message GetItemCommentReq{
+	int64 item_id = 1;
+	int64 last_comment_id = 2;
+}
+
+message GetItemCommentResp{
+	repeated com.turtle.sharingmsgdef.ItemComment item_comments = 1;
+	bool finish = 2;
+}
+
+message SocialShareItemReq {
+    int64 user_id = 1;  // 用户ID
+    int64 item_id = 2; // 商品ID
+    string url = 3; // 分享URL
+    string note = 4; // 留言
+}
+
+message SocialShareItemResp {
+    int32 error_code = 1;// [default = 0]; //默认为0，表示操作成功
+}
+
+//参加团购
+message JoinGroupBuyReq {
+	int64 item_id = 1;
+	int64 address_id = 2;//收货地址id
+	com.turtle.sharingmsgdef.Int64Value item_sku_id = 3;//商品sku id
+	bool use_coin = 4; // 是否使用代鼠币
+}
+message JoinGroupBuyResp {
+	ErrorCodeForBuyerHomeService error_code = 1;// [default = 0]; //默认为0，表示操作成功
+	int64 item_order_id = 2;//生成的订单id用于支付
+	int32 last_coin_num = 3;//用户还剩下几个袋鼠币
+}
+
+
+//添加商品到购物车
+message AddItemToCartReq {
+	int64 item_id = 1;//商品id
+	int64 item_sku_id = 2;//商品sku id
+	int32 item_cnt = 3;//商品数量
+	bool is_agent = 4;//是否是代理
+}
+message AddItemToCartResp {
+	ErrorCodeForBuyerHomeService error_code = 1;// [default = 0]; //默认为0，表示操作成功
+	int32 cart_item_num = 2;//购物车商品数量
+	com.turtle.sharingmsgdef.CartStoreItemInfo cart_store_item_info = 3;//新添加的商品信息
+}
+
+//获取袋鼠币记录
+message GetMyCoinLogReq{
+	int64 last_primary_key = 1;
+}
+
+message GetMyCoinLogResp{
+	repeated com.turtle.sharingmsgdef.CoinLogInfo logs = 1;
+	bool is_finish = 2;
+}
+
+// 首页
+service BuyerHomeService {
+    // @deprecated 获得首页商品列表。按最新首页展示定义，不用该API代之以GetStoreCoverList。暂保留，以备后续恢复多菜单形式 2015.11.23
+    rpc GetSelectionList(GetSelectionListReq) returns (GetSelectionListResp);
+
+    // 首页店铺封面列表展示
+    rpc GetStoreCoverList(GetStoreCoverListReq) returns (GetStoreCoverListResp);
+
+    // 查看商品详情
+    rpc GetItemDetail(GetItemDetailReq) returns (GetItemDetailResp);
+	// 查看代理商品详情
+	rpc GetItemDetailWithAgent(GetItemDetailWithAgentReq) returns (GetItemDetailWithAgentResp);
+
+    // 查看店铺详情
+    rpc GetStoreDetail(GetStoreDetailReq) returns (GetStoreDetailResp);
+
+    // 收藏
+    rpc GetFavoriteCategories(GetFavoriteCategoriesReq) returns (GetFavoriteCategoriesResp);
+    rpc CreateFavoriteCategory(CreateFavoriteCategoryReq) returns (CreateFavoriteCategoryResp);
+    rpc ModifyFavoriteCategory(ModifyFavoriteCategoryReq) returns (ModifyFavoriteCategoryResp);
+    rpc RemoveFavoriteCategory(RemoveFavoriteCategoryReq) returns (RemoveFavoriteCategoryResp);
+
+    // 收藏
+    rpc AddItemToFavorite(AddItemToFavoriteReq) returns (AddItemToFavoriteResp);
+
+    rpc RemoveItemFromFavorite(RemoveItemFromFavoriteReq) returns (RemoveItemFromFavoriteResp);
+
+    // 评论
+    rpc AddCommentForItem(AddCommentForItemReq) returns (AddCommentForItemResp);
+	//订单入口评论商品
+	rpc AddCommentForOrder(AddCommentForOrderReq) returns (AddCommentForOrderResp);
+	//获取商品评论
+	rpc GetItemComment(GetItemCommentReq) returns (GetItemCommentResp);
+
+    // 分享（向自己服务器提交部分）
+    rpc SocialShareItem(SocialShareItemReq) returns (SocialShareItemResp);
+
+    // 加入团购
+    rpc JoinGroupBuy(JoinGroupBuyReq) returns (JoinGroupBuyResp);
+
+    // 加入购物车
+    rpc AddItemToCart(AddItemToCartReq) returns (AddItemToCartResp);
+
+	//获取袋鼠币记录
+	rpc GetMyCoinLog(GetMyCoinLogReq) returns (GetMyCoinLogResp);
+}
+
+

@@ -28,6 +28,33 @@ CREATE TABLE `app_install_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+
+-- ----------------------------
+--  Table structure for `column`
+-- ----------------------------
+DROP TABLE IF EXISTS `column`;
+CREATE TABLE `column` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `column_types` varchar(255) DEFAULT NULL COMMENT '专栏类型，enum ColumnTypes {     INTRODUCTION = 0;// APP产品及模式介绍     HOWITWORKS = 1; // 证书及APP用法玩法介绍     TENDYTOPICSFASHIONSHOW = 2;// 潮流展示     OWNPRODUCTRECOMMENDATIONS = 3;//自有产品推荐     SCENE = 4; //场景 }\n',
+  `column_items` varchar(255) NOT NULL COMMENT '专栏内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+--  Table structure for `column_item`
+-- ----------------------------
+DROP TABLE IF EXISTS `column_item`;
+CREATE TABLE `column` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `column_pic` varchar(255) DEFAULT NULL COMMENT '专栏图片，1张',
+  `column_title` varchar(255) NOT NULL COMMENT '专栏标题',
+  `column_subtitle` varchar(255) NOT NULL COMMENT '专栏子标题',
+  `column_url` varchar(255) NOT NULL COMMENT '专栏网页地址',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- ----------------------------
 --  Table structure for `renter`
 -- ----------------------------
@@ -39,8 +66,7 @@ CREATE TABLE `renter` (
   `credit` int(11) DEFAULT NULL COMMENT '信任积分',
   `address` varchar(255) DEFAULT NULL COMMENT '送货地址',
   `favorite_cnt` int(11) DEFAULT NULL COMMENT '收藏数',
-  `store_cnt` int(11) DEFAULT NULL COMMENT '关注店铺数',
-  `friend_cnt` int(11) DEFAULT NULL COMMENT '好友数',
+  `merchant_cnt` int(11) DEFAULT NULL COMMENT '关注店铺数',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -93,11 +119,9 @@ CREATE TABLE `message_notification` (
   `id` bigint(20) NOT NULL,
   `renter_id` bigint(20) DEFAULT NULL COMMENT '租客ID',
   `merchant_id` bigint(20) DEFAULT NULL COMMENT '商家ID',
-  `notification_type` tinyint(4) DEFAULT NULL COMMENT '物流助手、平台活动、交易消息、交易返利',
+  `notification_type` tinyint(4) DEFAULT NULL COMMENT '物流助手、交易消息',
   `product_id` bigint(20) DEFAULT NULL COMMENT '产品ID',
   `order_id` bigint(20) DEFAULT NULL COMMENT '订单ID',
-  `friend_id` bigint(20) DEFAULT NULL COMMENT '好友ID',
-  `credit` int(11) DEFAULT NULL COMMENT '返利积分',
   `op_time` datetime DEFAULT NULL COMMENT '发生时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -114,10 +138,8 @@ CREATE TABLE `order` (
   `product_id` bigint(20) DEFAULT NULL COMMENT '产品ID',
   `product_pic` varchar(255) DEFAULT NULL COMMENT '产品图片，1张',
   `order_status` varchar(255) DEFAULT NULL COMMENT '订单状态，enum OrderStatus {     ALL = 0; // 全部订单     TO_BE_PAID = 1; // 待付款     TO_BE_DELIVERED = 2; // 待发货     TO_BE_RECEIVED = 3; // 待收货     TO_BE_REVIEWED = 4; // 待评价     REFUND = 5; // 退款 }\n',
-  `transaction_status` varchar(255) DEFAULT NULL COMMENT '交易状态，enum TransactionStatus {     PROCESSING = 0;// 交易进行     SUCCESS = 1; // 交易成功     COMMENTED = 2;// 交易已评价     CLOSED = 3;//交易关闭     REFUND_SUCCESS = 4; //退款成功 }\n',
-  `product_head` varchar(255) DEFAULT NULL COMMENT '产品标题',
-  `product_price` int(11) DEFAULT NULL COMMENT '产品价格。货币单位：分',
-  `product_cnt` int(11) DEFAULT NULL COMMENT '产品数量',
+  `transaction_status` varchar(255) DEFAULT NULL COMMENT '交易状态，enum TransactionStatus {     PROCESSING = 0;// 交易进行     SUCCESS = 1; // 交易成功     COMMENTED = 2;// 交易已评价     CLOSED = 3;//交易关闭     REFUND_SUCCESS = 4; //退还成功 }\n',
+  `product_cnt` int(11) DEFAULT NULL COMMENT '产品数量，合租的为三个商品，单品的只能一个',
   `product_price_total` int(11) DEFAULT NULL COMMENT '合计（含运费）',
   `product_shipping` int(11) DEFAULT NULL COMMENT '运费',
   `logistics_info` varchar(255) DEFAULT NULL COMMENT '物流信息',
@@ -140,6 +162,8 @@ CREATE TABLE `order` (
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '产品ID',
+  `product_title` varchar(255) DEFAULT NULL COMMENT '产品标题',
+  `product_types` varchar(255) DEFAULT NULL COMMENT '产品类型，enum ProductTypes {     COMBINE = 0;// 合租商品     SINGLE = 1; // 单品    CUSTOMIZED = 2;//定制饰品 }\n',
   `merchant_id` bigint(20) DEFAULT NULL COMMENT '商家ID',
   `product_intro` varchar(255) DEFAULT NULL COMMENT '产品概要描述',
   `product_pic` varchar(255) DEFAULT NULL COMMENT '产品图片，最多9张，格式：[<图片1>,<图片2>,...]',

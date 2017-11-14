@@ -1,0 +1,11 @@
+syntax = "proto3";
+package com.turtle.my;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "MyReminderServiceProto";
+option objc_class_prefix = "TID";
+
+// TODO
+// 我 —> 我的设置 -> 提醒设置
+//service MyReminderService {
+
+//}

@@ -1,0 +1,43 @@
+syntax = "proto3";
+package com.turtle.search;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "BuyerDiscoverSearchServiceProto";
+option objc_class_prefix = "TID";
+
+import "sharing_message_definition.proto";
+
+// 关键词搜索
+message SearchByKeywordReq {
+    int64 user_id = 1;  // 用户ID
+    string keyword = 2; // 搜索关键词
+    int32 store_id = 3; // 如果指定店铺，输入店铺ID
+    SearchObjective search_objective = 4;//搜索对象
+}
+
+enum SearchObjective {
+   	ITEM=0;
+	STORE=1;
+	FRIEND=3;
+	ALL=4;
+}
+
+message ItemHeadForSearch {
+    int64 item_id = 1;//产品ID
+    string item_pic_url = 2; //产品图标
+    string item_intro = 3;//产品简介
+    int32 item_price = 4;//产品价格
+    int32 item_favorite_num = 5;//产品收藏数
+}
+
+message SearchByKeywordResp {
+    repeated ItemHeadForSearch item_heads = 1;//产品列表
+    repeated com.turtle.sharingmsgdef.StoreHead store_heads = 2;//店铺列表
+    repeated com.turtle.sharingmsgdef.FriendHead friend_heads = 3;//人列表
+
+}
+
+// 首页 —> 搜索，聊天 -> 商品搜索
+service BuyerDiscoverSearchService {
+    // 关键词搜索
+    rpc SearchByKeyword(SearchByKeywordReq) returns (SearchByKeywordResp);
+}

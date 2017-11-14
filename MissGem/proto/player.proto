@@ -1,0 +1,43 @@
+
+syntax = "proto3";
+
+package player;
+
+option java_multiple_files = true;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "PlayerProto";
+
+option objc_class_prefix = "GPF";
+
+// The greeting service definition.
+service PlayerService {
+  // Sends a greeting
+  rpc login (LoginRuest) returns (LoginResponse);
+  rpc getNotify (GetNotifyRequest) returns (stream GetNotifyResponse);
+  rpc chatTest (ChatTestRequest) returns (stream ChatTestResponse);
+}
+
+// The request message containing the user's name.
+message LoginRuest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message LoginResponse {
+  string message = 1;
+}
+
+message GetNotifyRequest{
+}
+
+message GetNotifyResponse{
+	string message = 1;
+}
+
+message ChatTestRequest{
+	string message = 1;
+}
+
+message ChatTestResponse{
+	string message = 2;
+}

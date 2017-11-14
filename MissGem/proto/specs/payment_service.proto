@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package com.turtle.payment;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "PaymentServiceProto";
+option objc_class_prefix = "TID";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForPaymentService{
+	SUCCESS = 0;
+	ITEM_ORDER_NOT_FOUND = 1;//订单未找到
+	ORDER_NOT_IS_MINE = 2;//订单不是自己的
+	ORDER_TRANSACTION_STATUS_ERROR = 3;//该订单的交易状态不能支付
+	PARAMETER_INVALID = 4;//客户端参数不合法
+	RMB_IS_INVALID = 5;//支付金额不对
+	SERVER_FAILED = 6;//服务器异常
+}
+
+//支付订单
+message PayItemOrderReq{
+	repeated int64 item_order_ids = 1;//订单id数组（从购物车提交会一次性支付多个订单）
+	com.turtle.sharingmsgdef.PaymentPlatform platform = 2; //支付平台
+	string client_ip = 3;//客户端ip
+}
+
+message PayItemOrderResp{
+	ErrorCodeForPaymentService error_code = 1;
+	string charge = 2;
+}
+
+//店铺充值
+message PaymentStoreReq{
+	int64 store_id = 1;//店铺id
+	string channel = 2;//支付通道（ping++使用）
+	string client_ip = 3;//客户端ip
+	int32 money = 4;//金额（单位：分）
+}
+
+message PaymentStoreResp{
+	ErrorCodeForPaymentService error_code = 1;
+	string charge = 2;
+}
+
+// 消息
+service PaymentService {
+	rpc PayItemOrder (PayItemOrderReq) returns (PayItemOrderResp);
+	rpc PaymentStore(PaymentStoreReq) returns (PaymentStoreResp);
+}

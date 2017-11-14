@@ -1,0 +1,140 @@
+syntax = "proto3";
+package com.turtle.my.order;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "MyOrdersServiceProto";
+option objc_class_prefix = "TID";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForMyOrdersService{
+	SUCCESS = 0;
+	FAILED = 13001;
+}
+
+// 获得我的订单列表
+message GetMyOrderListReq {
+    com.turtle.sharingmsgdef.OrderStatus order_status = 1; // 所查询的订单状态
+}
+
+message GetMyOrderListResp {
+    repeated com.turtle.sharingmsgdef.OrderSimpleInfo my_orders = 1;
+	com.turtle.sharingmsgdef.OrderStatus order_status = 2;
+}
+
+// 订单详情
+message GetMyOrderDetailReq {
+    int64 order_id = 1;  // 订单ID
+}
+
+message GetMyOrderDetailResp {
+    com.turtle.sharingmsgdef.OrderSimpleInfo order_simple_info = 1; // 订单信息
+	com.turtle.sharingmsgdef.UserAddress address = 2;
+    string pay_tx_id = 3; // 支付交易号
+    int64 create_time_seconds = 4; // 创建时间
+    int64 paid_time_seconds = 5; // 付款时间
+    int64 delivery_time_seconds = 6; // 发货时间
+    int64 close_deal_time_seconds = 7; // 成交时间
+}
+
+//取消订单
+message CancelMyOrderReq{
+	int64 order_id = 1;//订单id
+}
+
+message CancelMyOrderResp{
+	ErrorCodeForMyOrdersService error_code = 1;
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 2;//订单新的状态
+}
+
+//删除订单
+message RemoveMyOrderReq {
+    int64 order_id = 1;  // 订单ID
+}
+message RemoveMyOrderResp {
+    ErrorCodeForMyOrdersService error_code = 1;
+	int64 order_id = 2;
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 3;//订单新的状态
+}
+
+//确认收货
+message ConfirmReceiptItemReq{
+	int64 order_id = 1;
+}
+
+message ConfirmReceiptItemResp{
+	ErrorCodeForMyOrdersService error_code = 1;
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 2;//订单新的状态
+}
+
+//查看订单物流状态
+message ViewItemOrderLogisticsInfoReq{
+	int64 item_order_id = 1;
+}
+
+message ViewItemOrderLogisticsInfoResp{
+	com.turtle.sharingmsgdef.Int32Value state = 1;// 定义参考 http://www.kuaidi100.com/openapi/api_post.shtml
+	repeated com.turtle.sharingmsgdef.ItemOrderLogisticsStepInfo steps = 2;
+}
+
+//延迟收货
+message DelayReceiptOrderReq{
+	int64 item_order_id = 1;//订单id
+}
+
+message DelayReceiptOrderResp{
+	ErrorCodeForMyOrdersService error_code = 1;
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 2;//订单新的状态
+}
+
+//申请退货
+message ApplyReturnItemReq{
+	int64 item_order_id = 1;//订单id
+	int64 order_item_primary_key = 2;//OrderItemInfo.primary_key
+	string reason = 3;//退货理由
+	int32 money = 4;//退多少钱
+}
+
+message ApplyReturnItemResp{
+	ErrorCodeForMyOrdersService error_code = 1;
+	com.turtle.sharingmsgdef.OrderItemReturnStatusChange order_item_return_status = 2;//订单商品新的状态
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 3;//订单新的状态
+}
+
+//获取快递公司名字编号信息
+message GetLogisticsCompanyListReq{
+}
+
+message GetLogisticsCompanyListResp{
+	repeated com.turtle.sharingmsgdef.LogisticsCompanyInfo logistics_companys = 1;
+	int32 version = 2;//版本号
+}
+
+// 我的订单
+service MyOrdersService {
+    // 获得我的订单列表
+    rpc GetMyOrderList(GetMyOrderListReq) returns (GetMyOrderListResp);
+
+    // 订单详情
+    rpc GetMyOrderDetail(GetMyOrderDetailReq) returns (GetMyOrderDetailResp);
+
+	//取消订单
+	rpc CancelMyOrder(CancelMyOrderReq) returns (CancelMyOrderResp);
+	
+    // 删除订单
+    rpc RemoveMyOrder(RemoveMyOrderReq) returns (RemoveMyOrderResp);
+	
+	//确认收货
+	rpc ConfirmReceiptItem(ConfirmReceiptItemReq) returns (ConfirmReceiptItemResp);
+	
+	//查看物流状态
+	rpc ViewItemOrderLogisticsInfo(ViewItemOrderLogisticsInfoReq) returns (ViewItemOrderLogisticsInfoResp);
+	
+	//延迟收货
+	rpc DelayReceiptOrder(DelayReceiptOrderReq) returns (DelayReceiptOrderResp);
+	
+	//申请退款
+	rpc ApplyReturnItem(ApplyReturnItemReq) returns (ApplyReturnItemResp);
+	
+	//获取快递公司列表
+	rpc GetLogisticsCompanyList(GetLogisticsCompanyListReq) returns (GetLogisticsCompanyListResp);
+}

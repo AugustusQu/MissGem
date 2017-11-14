@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package com.missGem.server.data;
+option java_package = "com.missGem.common.proto";
+option java_outer_classname = "RedisDataProto";
+
+message ItemRedis{
+	int64 item_id = 1;//商品id
+	string item_name = 2;//商品名字
+	string item_intro = 3;//商品简介
+	string item_img_main = 4;//主图片
+	repeated string item_img_cover = 5;//封面图
+	repeated string item_img_vendor = 6;//供应商图片
+	int32 item_retail_price = 7;//单品零售价格
+	int32 item_discount_price = 8;//单品折扣价
+	int64 store_id = 11;//店铺id
+	int64 merchant_id = 12;//租家id
+}
+
+// renter存入redis的数据结构
+message RenterRedis{
+	enum GenderEnum{
+		unknow = 0;//未设置
+		female = 1;//女
+		male = 2;//男
+	}
+	int64 renterId = 1;//主键id
+	string nickname = 2;//昵称
+	string photo = 3;//头像
+	GenderEnum gender = 4;//性别
+	string mobileNum = 5;//电话号码
+	int32 age = 8;//年龄
+	string area = 9;//地址
+}
+
+// store存入redis的数据结构
+message StoreRedis{
+	int64 storeId = 1;//主键id
+	int64 merchant_id = 2;//租家id
+	string store_name = 4;//店铺名字
+	string photo = 5;//店铺头像
+	string intro = 6;//店铺简介
+}
+
+

@@ -1,0 +1,81 @@
+syntax = "proto3";
+package com.turtle.shopping;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "ShoppingServiceProto";
+option objc_class_prefix = "TID";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForShoppingService{
+	SUCCESS = 0;
+	FAILED = 12001;//失败
+	PRODUCT_NOT_FOUND = 12002;//商品未找到
+	INVENTORY_LESS = 12003;//库存不够
+}
+
+//查看购物车信息
+message GetItemListInCartReq {
+    int64 user_id = 1;  // 用户ID
+}
+message GetItemListInCartResp {
+	repeated com.turtle.sharingmsgdef.CartStoreItemInfo cart_store_item_info = 1;
+}
+
+//删除购物车数据
+message RemoveItemsInCartReq {
+    int64 user_id = 1;  // 用户ID
+    int64 primary_key_id = 2;//主键id
+}
+message RemoveItemsInCartResp {
+	ErrorCodeForShoppingService error_code = 1;
+	int64 primary_key_id = 2;//主键id
+}
+
+//修改购物车某个商品的数量
+message ModifyItemCntInCartReq {
+    int64 user_id = 1;  // 用户ID
+    int64 primary_key_id = 2;//主键id
+    int32 item_cnt = 3;
+}
+message ModifyItemCntInCartResp {
+	ErrorCodeForShoppingService error_code = 1;
+	int64 primary_key_id = 2;//主键id
+    int32 item_cnt = 3;
+}
+
+message PlaceOrderReq {
+	message AddOrderInfo{
+		int64 item_id = 1;//商品id
+		int64 item_sku_id = 2;//商品sku id
+		int32 item_num = 3;//购买个数
+		int64 item_cart_primary_key = 4;//购物车主键id（只有从购物车里点击生成订单时又此数据）
+		com.turtle.sharingmsgdef.ItemBuyType item_buy_type = 5;
+		int32 agent_level = 6;//代理等级
+	}
+	repeated AddOrderInfo items = 1;
+	int64 address_id = 2;//收货地址id
+    bool use_coin = 3; // 是否使用代鼠币
+}
+message PlaceOrderResp {
+	ErrorCodeForShoppingService error_code = 1;
+	repeated int64 item_cart_primary_keys = 2;
+	repeated int64 item_order_ids = 3;//生成的订单id数组，用于支付
+	int32 last_coin_num = 4;//用户还剩下几个袋鼠币
+}
+
+
+// 我 —> 发起团购｜加入购物车｜直接购买，购物车
+service ShoppingService {
+    // 我的购物车
+    rpc GetItemListInCart(GetItemListInCartReq) returns (GetItemListInCartResp);
+
+    // 删除购物车商品
+    rpc RemoveItemsInCart(RemoveItemsInCartReq) returns (RemoveItemsInCartResp);
+
+    // 修改购物车商品数量
+    rpc ModifyItemCntInCart(ModifyItemCntInCartReq) returns (ModifyItemCntInCartResp);
+
+    // 结算（提交订单，待付款）
+    rpc PlaceOrder(PlaceOrderReq) returns (PlaceOrderResp);
+
+}

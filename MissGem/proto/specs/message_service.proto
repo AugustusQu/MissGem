@@ -1,0 +1,246 @@
+syntax = "proto3";
+
+package com.turtle.msg;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "MessageServiceProto";
+option objc_class_prefix = "TID";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForMessageService{
+	SUCCESS = 0;//成功
+	FAILED = 1;//失败
+	STORE_NOT_FOUND = 2;//店铺未找到
+	FRIEND_NOT_FOUND = 3;//好友数据未找到
+	SEND_ADD_MESSAGE_ALREADY = 4;//已经发过请求加好友数据了
+	FRIEND_ALREADY = 5;//已经是好友了
+	FRIEND_SEND_MESSAGE_ALREADY = 6;//对方已经先于你发过请求了
+}
+
+message QueryStoresReq {
+    int64 user_id = 1;  // 用户ID
+    string keyword = 2; // 店铺名称、店主昵称、手机号码
+}
+
+message QueryStoresResp {
+    repeated com.turtle.sharingmsgdef.StoreHead stores = 1;
+}
+
+message FriendRelation {
+    int64 friend_id = 1; // 某人ID
+    string friend_nickname = 2; // 某人昵称
+    string friend_intro = 3; // 某人简介
+    string one_degree_relation = 4; // 1度关系描述，比如同学、同事
+    string two_degree_relation = 5; // 2度关系描述，比如同学、同事
+}
+
+//添加关注好友的店铺
+message RequestAddFriendStoreReq{
+	int64 store_id = 1;
+}
+
+message RequestAddFriendStoreResp{
+	ErrorCodeForMessageService error_code = 1; //默认为0，表示操作成功
+}
+
+//添加关注店铺
+message RequestAddStoreReq {
+    int64 store_id = 1; // 店铺ID
+    string why_add_store = 2; //添加理由
+	com.turtle.sharingmsgdef.PeopleRelation relation = 3;//关系
+	string relation_other = 4;//如果relation为0，则读取该字段
+}
+
+message RequestAddStoreResp {
+    ErrorCodeForMessageService error_code = 1; //默认为0，表示操作成功
+}
+
+//查看关注店铺请求消息
+message ViewAddStoreMessageReq{
+	int64 primary_id = 1;//关注信息的主键id
+}
+
+message ViewAddStoreMessageResp{
+	int64 primary_id = 1;//关注信息的主键id
+	com.turtle.sharingmsgdef.UserSimpleInfo userSimpleInfo = 2;
+	string why_add_you = 3; //添加理由
+	com.turtle.sharingmsgdef.PeopleRelation relation = 4;//关系
+	string relation_other = 5;//如果relation为0，则读取该字段
+	repeated com.turtle.sharingmsgdef.UserSimpleInfo common_user = 6;//申请者的哪些好友关注了店铺
+	com.turtle.sharingmsgdef.StoreSimpleInfo store = 7;//请求关注的店铺简要信息
+}
+
+//回应关注店铺
+message ReplyAddStoreReq {
+	int64 primary_id = 1;//关注信息的主键id
+	bool agree = 2;//true:同意  false:拒绝
+}
+
+message ReplyAddStoreResp {
+	ErrorCodeForMessageService error_code = 1; //默认为0，表示操作成功
+}
+
+//删除关注店铺
+message DeleteStoreAttentionReq{
+	int64 store_id = 1;//店铺id
+}
+
+message DeleteStoreAttentionResp{
+	ErrorCodeForMessageService error_code = 1;
+}
+
+
+message QueryPeopleReq {
+    string keyword = 1; // 搜索好友关键词
+}
+
+message Person {
+	com.turtle.sharingmsgdef.UserSimpleInfo user_simple_info = 1;
+    com.turtle.sharingmsgdef.DegreeNumEnum degree_num = 2; // 几度关系，1度关系表明已是好友
+    com.turtle.sharingmsgdef.PeopleRelation relation = 3;//好友关系（一度好友是有此值）
+	string relation_other = 4;//如果relation为0，则读取该字段（一度好友是有此值）
+	bool is_send_add_friend_request = 5;//是否已发出加好友申请(仅当2度关系时使用)
+}
+
+message QueryPeopleResp {
+    repeated Person people = 1; //搜索的好友结果
+}
+
+//查询用户（1度+2度关系）
+message QueryRelatedPeopleReq {
+    string keyword = 1; // 搜索好友关键词
+}
+message QueryRelatedPeopleResp {
+    repeated Person people = 1; //搜索的好友结果
+}
+
+message RequestAddPersonReq {
+    int64 person_id = 1;// 某人ID
+    string why_add_you = 3; //添加理由
+	com.turtle.sharingmsgdef.PeopleRelation relation = 4;//关系
+	string relation_other = 5;//如果relation为0，则读取该字段
+	repeated int64 attention_store_ids = 6;//邀请加好友并且关注哪些店的id
+}
+
+message RequestAddPersonResp {
+    ErrorCodeForMessageService error_code = 1; //默认为0，表示操作成功
+}
+
+//查看添加好友请求消息
+message ViewAddFriendMessageReq{
+	int64 friend_user_id = 1;//好友用户id
+}
+
+message ViewAddFriendMessageResp{
+	com.turtle.sharingmsgdef.UserSimpleInfo userSimpleInfo = 1;
+	string why_add_you = 2; //添加理由
+	com.turtle.sharingmsgdef.PeopleRelation relation = 3;//关系
+	string relation_other = 4;//如果relation为0，则读取该字段
+	repeated com.turtle.sharingmsgdef.FriendHead common_friend = 5;//共同好友
+	repeated com.turtle.sharingmsgdef.StoreSimpleInfo stores = 6;//对方如果是卖家，要暂时对方添加你为好友时，邀请你关注的店铺数据
+}
+
+message ReplyAddFriendReq {
+	int64 user_id = 1;//好友userId
+	bool agree = 2;//true:同意  false:拒绝
+	repeated int64 attention_store_ids = 3;//加好友并且关注哪些店
+}
+
+message ReplyAddFriendResp {
+	ErrorCodeForMessageService error_code = 1; //默认为0，表示操作成功
+	int32 friend_cnt = 2;//好友总数
+	com.turtle.sharingmsgdef.FriendHead friend = 3;//添加成功的好友
+}
+
+//删除好友
+message DeleteFriendReq{
+	int64 friend_id = 1;
+}
+
+message DeleteFriendResp{
+	ErrorCodeForMessageService error_code = 1;
+}
+
+message QueryPeopleYouMayKnowReq {
+    int64 user_id = 1;  // 用户ID
+}
+
+message QueryPeopleYouMayKnowResp {
+    repeated Person people = 1; //推荐的好友结果
+}
+
+//搜索我的所有店铺的商品
+message QueryMyItemReq{
+	string keyword = 1;
+}
+
+message QueryMyItemResp{
+	repeated com.turtle.sharingmsgdef.ItemSimpleInfo  item_simple_info = 1;
+}
+
+//分页查询我的所有店铺的所有商品
+message GetMyItemListReq{
+	int64 last_item_id = 1;
+}
+
+message GetMyItemListResp{
+	repeated com.turtle.sharingmsgdef.MgmtItemInfo item_simple_info = 1;
+	bool is_finish = 2;
+}
+
+//所搜我所关注店铺的商品
+message QueryMyAttentionStoreItemReq{
+	string keyword = 1;
+}
+
+message QueryMyAttentionStoreItemResp{
+	repeated com.turtle.sharingmsgdef.ItemSimpleInfo  item_simple_info = 1;
+}
+
+//搜索我的某个店铺的商品
+message QueryMyStoreItemReq{
+	string keyword = 1;
+	int64 store_id = 2;
+}
+
+message QueryMyStoreItemResp{
+	//repeated com.turtle.sharingmsgdef.ItemSimpleInfo  item_simple_info = 1;
+	repeated com.turtle.sharingmsgdef.MgmtItemInfo items = 1;
+}
+
+// 消息
+service MessageService {
+    // 添加店铺
+    rpc QueryStores(QueryStoresReq) returns (QueryStoresResp);
+	rpc RequestAddFriendStore(RequestAddFriendStoreReq) returns (RequestAddFriendStoreResp);
+    rpc RequestAddStore(RequestAddStoreReq) returns (RequestAddStoreResp);
+	rpc ViewAddStoreMessage(ViewAddStoreMessageReq) returns (ViewAddStoreMessageResp);
+    rpc ReplyAddStore(ReplyAddStoreReq) returns (ReplyAddStoreResp);
+	rpc DeleteStoreAttention(DeleteStoreAttentionReq) returns (DeleteStoreAttentionResp);
+
+
+    // 添加好友和客户。仅对于卖家操作：好友添加后，自动成为客户；仅卖家账号可见添加客户项。
+    rpc QueryPeople(QueryPeopleReq) returns (QueryPeopleResp);
+	rpc QueryRelatedPeople(QueryRelatedPeopleReq) returns (QueryRelatedPeopleResp);
+    // 发出添加好友请求
+    rpc RequestAddPerson(RequestAddPersonReq) returns (RequestAddPersonResp);
+	rpc ViewAddFriendMessage(ViewAddFriendMessageReq) returns (ViewAddFriendMessageResp);
+    rpc ReplyAddFriend(ReplyAddFriendReq) returns (ReplyAddFriendResp);
+	rpc DeleteFriend(DeleteFriendReq) returns (DeleteFriendResp);
+	
+	//查询自己所有店铺的商品
+	rpc QueryMyItem(QueryMyItemReq) returns (QueryMyItemResp);
+	//分页查询我的所有店铺的所有商品
+	rpc GetMyItemList(GetMyItemListReq) returns (GetMyItemListResp);
+	//查询某个店铺的商品
+	rpc QueryMyStoreItem(QueryMyStoreItemReq) returns (QueryMyStoreItemResp);
+	//查询我所关注店铺的商品
+	rpc QueryMyAttentionStoreItem(QueryMyAttentionStoreItemReq) returns (QueryMyAttentionStoreItemResp);
+	
+    // 猜你认识
+    rpc QueryPeopleYouMayKnow(QueryPeopleYouMayKnowReq) returns (QueryPeopleYouMayKnowResp);
+
+    //for 扫一扫，客户端自己生成 用户和店铺的二维码
+}
+
+

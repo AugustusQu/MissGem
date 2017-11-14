@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+package com.turtle.auth;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "MobileLoginServiceProto";
+option objc_class_prefix = "TID";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForMobileLogin{
+	SUCCESS = 0;//
+	FAILED = 10001;//失败
+	VERIFY_CODE_TIMEOUT = 10002;//验证码已过期
+	VERIFY_CODE_INVALID = 10003;//验证码不对
+	NAME_LENGTH_INVALID = 10004;//名字长度非法
+	NAME_REPEATED = 10005;//名字重复
+	NO_FOUND_USER = 10006;//根据userId未找到user数据
+	MOBILE_NUM_INVALID = 10007;//电话号码非法
+}
+
+// 获得手机验证码消息
+message GetVerifyCodeReq {
+    string mobile_num = 1; // 手机号码
+}
+
+message GetVerifyCodeResp {
+	ErrorCodeForMobileLogin error_code = 1;
+	string verify_code = 2;//md5加密
+	repeated bytes nickname = 3;//加密后字符串
+	string mobile_num = 4;
+}
+
+// 通过手机号码登录消息
+message LoginViaMobileNumReq {
+    string mobile_num = 1; // 手机号码
+    int32 verify_code = 2; // 验证码，4位数字
+    string per_install_uuid = 3; // 每安装UUID
+	string nickname = 4;//注册是有此参数
+	string store_invitation_code = 5;//店铺邀请码，只有注册新用户的时候才有
+}
+
+message LoginViaMobileNumResp {
+    ErrorCodeForMobileLogin error_code = 1;// [default = 0]; //默认为0，表示操作成功
+    //bool has_nickname = 2; // 该用户是否已设置好昵称
+    int64 user_id = 3; // 用户ID
+    int64 install_ts = 4; //安装时间
+	int64 refresh_ts = 5;//刷新时间
+	LoginInfo loginInfo = 6;
+}
+
+// 刷新登录
+message RefreshLoginReq {
+    int64 user_id = 1;  // 用户ID
+    string per_install_uuid = 2; // 每安装UUID
+    int64 refresh_ts = 3; // 刷新登录时间戳
+    string ticket = 4; //身份验证，MD5(install_ts + user_id + per_install_uuid + refresh_ts)
+}
+
+message RefreshLoginResp {
+    ErrorCodeForMobileLogin error_code = 1;// [default = 0]; //默认为0，表示操作成功
+	//bool has_nickname = 2;
+	LoginInfo loginInfo = 3;
+}
+
+//登陆游戏发送的数据结构
+message LoginInfo{
+	com.turtle.sharingmsgdef.UserInfo userInfo = 1;
+	ChatLoginInfo chat_login_info = 2;//聊天服务器登陆信息
+	repeated com.turtle.sharingmsgdef.FavoriteCategoryInfo favoriteCategory = 3;//所有搜藏夹信息
+	repeated com.turtle.sharingmsgdef.UserAddress user_address = 4;//送货地址
+	int64 address_default_id = 5;//默认收货地址id
+	int32 cart_item_num = 6;//购物车内商品数量
+	int32 coin = 7;//我的袋鼠币数量
+	ServerSettings server_settings = 8;//服务器设置
+	int32 collect_topic_num = 9;//收藏话题数量
+	int32 collect_item_num = 10;//收藏商品数量
+	repeated com.turtle.sharingmsgdef.OrderStatusAndNum order_status_num = 11;//订单状态和数量
+}
+
+//服务器的一些设置
+message ServerSettings{
+	int32 coin_to_rmb_fen = 1;//一个袋鼠币等于多少人民币分
+	int32 moments_tag_version = 2;//话题标签版本号
+	int32 logistics_company_version = 3;//物流公司名字和编码配置的版本号
+	string file_server_address_upload = 4;//文件服务器上传地址
+}
+
+message ChatLoginInfo{
+	string user_name = 1;//聊天服用户名称
+	string password = 2;//聊天服用户登录密码
+	string server_ip = 3;//聊天服务器ip
+	string server_name = 4;//聊天服务器名字
+	int32 server_port = 5;//对客户单开的聊天端口
+	string file_server_address_upload = 6;//聊天文件服务器上传地址
+	string file_server_address_download = 7;//聊天文件服务器下载地址
+}
+
+message LogoutReq{
+	string uuid = 1;
+}
+
+message LogoutResp{
+	ErrorCodeForMobileLogin error_code = 1;
+}
+
+// 登录 —> 手机登录
+service MobileLoginService {
+    // 获得手机验证码
+    rpc GetVerifyCode(GetVerifyCodeReq) returns (GetVerifyCodeResp);
+
+    // 通过手机号码登录
+    rpc LoginViaMobileNum(LoginViaMobileNumReq) returns (LoginViaMobileNumResp);    
+
+    // 刷新登录
+    rpc RefreshLogin(RefreshLoginReq) returns (RefreshLoginResp);	
+	
+	//退出登录
+	rpc Logout(LogoutReq) returns (LogoutResp);
+}
+
+

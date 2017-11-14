@@ -1,0 +1,163 @@
+syntax = "proto3";
+package com.turtle.b.item;
+option java_package = "com.lz.turtle.proto.b";
+option java_outer_classname = "BItemMgmtServiceProto";
+option objc_class_prefix = "TIDB";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForItemMgmt {
+	SUCCESS = 0;//成功
+	FAILED = 1;
+	ITEM_NOT_UNPUBLISHED = 2;//商品还未下架
+}
+//获得商品列表
+message GetItemListReq {
+	int64 store_id = 1; //店铺ID
+	enum ItemListType{
+		ITEM_LIST_ALL = 0;//全部
+		ITEM_LIST_NEW = 1;//新品
+		ITEM_LIST_HOT = 2;//热销
+	}
+	ItemListType item_list_type = 2;//热销、新品
+	bool is_publish = 3;//是否上架
+	int32 page_num = 4; //请求第几页的数据
+}
+message GetItemListResp {
+	repeated com.turtle.sharingmsgdef.MgmtItemInfo item_list_info = 1;//商品列表	
+	GetItemListReq.ItemListType item_list_type = 2;//热销、新品
+	bool is_publish = 3;//是否上架
+	int32 page_num = 4;//当前第几页 
+	int32 page_total = 5;//总共几页
+}
+
+//创建商品
+message CreateItemReq{
+	ItemDetailForEdit itemDetail = 1;
+}
+
+message CreateItemResp{
+	ErrorCodeForItemMgmt error_code = 1;
+}
+
+//发票抬头类型
+enum InvoicePaidByType {
+	COMPANY = 0;//公司
+	INDIVIDUAL = 1;//个人
+}
+//商品规格信息
+message ItemSpecInfo {
+	string spec = 1;//规格
+	int32 inventory = 3;//库存
+	int64 primary_key_id = 8;//主键id
+}
+
+message ItemDetailForEdit {
+	int64 store_id = 1; //店铺ID
+	string item_name = 2;//商品名称
+	repeated com.turtle.sharingmsgdef.ItemMedia item_media_cover = 3; //封面资源
+	repeated com.turtle.sharingmsgdef.ItemDescInfo item_desc_info= 4;	// 商品描述信息（文字+图片)
+	repeated ItemSpecInfo item_specs = 8;//所有的商品规格信息（多个规格时有用）
+	int32 retail_price = 9;//零售价格，分
+	com.turtle.sharingmsgdef.Int32Value group_buy_price = 10;//拼团价
+	com.turtle.sharingmsgdef.Int32Value group_buy_size = 11;//开团人数
+	com.turtle.sharingmsgdef.Int32Value discount_price = 12;//折扣价， 分
+	string brand_location = 13;//品牌所在地
+	com.turtle.sharingmsgdef.Int32Value tax = 14;//税费
+	com.turtle.sharingmsgdef.Int32Value freight = 15;//运费
+	string search_keyword = 16;//搜索关键字
+	bool can_return = 17;//是否支持退货
+	int32 inventory = 18;//库存（如果没有规格，则库存用此字段）
+	int64 item_id = 19;
+	com.turtle.sharingmsgdef.Int32Value max_usable_coin_in_fen = 20; // 可以使用代鼠币折算的钱上限, 分
+}
+
+//获取ItemDetail以供编辑商品
+message GetItemDetailForEditReq{
+	int64 item_id = 1;
+}
+
+message GetItemDetailForEditResp{
+	ItemDetailForEdit itemDetail = 1;
+}
+
+
+// 获得详情
+message GetItemDetailReq {
+	int64 item_id = 1;//商品ID
+}
+message GetItemDetailResp {
+	ErrorCodeForItemMgmt error_code = 1;
+    com.turtle.sharingmsgdef.ItemInfo item_info = 2; // 商品概要信息
+	com.turtle.sharingmsgdef.UserSimpleInfo seller = 3; // 卖家
+	com.turtle.sharingmsgdef.StoreSimpleInfo store = 4; // 店铺
+    int32 people_also_favorite_cnt = 5; // 也收藏了的人们数
+    repeated com.turtle.sharingmsgdef.UserSimpleInfo people_also_favorite = 6; //也收藏了的人们
+    repeated com.turtle.sharingmsgdef.ItemComment comments = 8; // 商品评论，来自我的好友和我
+	int32 commont_cnt = 9;//评价总数
+	bool is_publish = 10;//是否上架
+}
+
+// 编辑
+message EditItemReq {
+	ItemDetailForEdit item_detail = 1;//商品详情
+}
+message EditItemResp {
+	ErrorCodeForItemMgmt error_code = 1;
+}
+
+// 上架
+message PublishItemReq {
+	int64 item_id = 1;
+}
+message PublishItemResp {
+	ErrorCodeForItemMgmt error_code = 1;
+}
+
+//下架
+message UnPublishItemReq {
+	int64 item_id = 1;//商品ID
+}
+message UnPublishItemResp {
+	ErrorCodeForItemMgmt error_code = 1;
+}
+
+//删除
+message RemoveItemReq {
+	int64 item_id = 1;//商品ID
+}
+message RemoveItemResp {
+	ErrorCodeForItemMgmt error_code = 1;
+}
+
+
+//分享
+message ShareItemReq {
+	int64 item_id = 1;//商品ID
+	string share_info = 2;//分享信息
+}
+message ShareItemResp {
+	ErrorCodeForItemMgmt error_code = 1;
+}
+
+// 商品管理
+service ItemMgmtService {
+   	// 获得商品列表
+    rpc GetItemList(GetItemListReq) returns (GetItemListResp);
+	//创建商品
+	rpc CreateItem(CreateItemReq) returns (CreateItemResp);
+	//获取编辑详情
+	rpc GetItemDetailForEdit(GetItemDetailForEditReq) returns (GetItemDetailForEditResp);
+    // 获得商品详情
+   	rpc GetItemDetail(GetItemDetailReq) returns (GetItemDetailResp);
+    // 编辑
+   	rpc EditItem(EditItemReq) returns (EditItemResp);
+	// 上架
+    rpc PublishItem(PublishItemReq) returns (PublishItemResp);
+	// 下架，下架的商品对新消费者不可见，对订单进行中或已完成的消费者提供商品快照
+	rpc UnPublishItem(UnPublishItemReq) returns (UnPublishItemResp);
+	// 删除，仅当下架后的商品允许删除，对订单进行中或已完成的消费者提供商品快照
+	rpc RemoveItem(RemoveItemReq) returns (RemoveItemResp);
+	// 分享，第三方分享同时异步上报服务器分享信息
+	rpc ShareItem(ShareItemReq) returns (ShareItemResp);
+}

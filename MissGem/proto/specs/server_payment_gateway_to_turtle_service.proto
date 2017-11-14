@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package com.turtle.common.payment;
+option java_package = "com.lz.turtle.common.proto";
+option java_outer_classname = "ServerPaymentGatewayToTurtleServiceProto";
+option objc_class_prefix = "TID";
+
+enum ErrorCodeForPaymentGatewayToTurtleService{
+	SUCCESS = 0;
+	FAILED = 1;
+}
+
+//支付网关服务器通知turtle服务器充值成功
+message NotifyPaymentSuccessToTurtleServerReq{
+	int64 tx_id = 1;
+}
+
+message NotifyPaymentSuccessToTurtleServerResp{
+	ErrorCodeForPaymentGatewayToTurtleService error_code = 1;
+}
+
+//支付网关服务器通知turtle服务器退款成功
+message NotifyRefundSuccessToTurtleServerReq{
+	string refund_id = 1;//退款id
+}
+
+message NotifyRefundSuccessToTurtleServerResp{
+	ErrorCodeForPaymentGatewayToTurtleService error_code = 1;
+}
+
+// 消息
+service ServerPaymentGatewayToTurtleService {
+    rpc NotifyPaymentSuccessToTurtleServer (NotifyPaymentSuccessToTurtleServerReq) returns (NotifyPaymentSuccessToTurtleServerResp);
+	rpc NotifyRefundSuccessToTurtleServer(NotifyRefundSuccessToTurtleServerReq) returns (NotifyRefundSuccessToTurtleServerResp);
+}

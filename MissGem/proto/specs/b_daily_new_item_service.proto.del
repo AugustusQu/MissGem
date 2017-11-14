@@ -1,0 +1,37 @@
+syntax = "proto3";
+package com.turtle.b;
+option java_package = "com.lz.turtle.proto.b";
+option java_outer_classname = "BDailyNewItemMgmtServiceProto";
+option objc_class_prefix = "TIDB";
+
+
+message GetDailyNewItemsReq {
+	int32 store_id = 1;//店铺ID
+	int32 page_num = 2;//请求第几页
+}
+message GetDailyNewItemsResp {
+	repeated ItemCard item_card = 1;//商品卡片信息
+	int64 latest_update_time = 2;//最后更新时间
+        int32 page_num = 3;//当前第几页
+        int32 page_total = 4;//总共几页	
+}
+message ItemCard {
+	int64 id = 1;//商品ID
+	string name = 2;//商品名称
+	string image = 3;//商品图片
+	string price = 4;//售价，按分
+}
+
+message GetItemDetailsReq {
+	int64 item_id = 1;//商品ID
+}
+message GetItemDetailsResp {
+}
+
+// 每日新品 
+service DailyNewItemMgmtService {
+   	// 获得每日新品列表
+    	rpc GetDailyNewItems(GetDailyNewItemsReq) returns (GetDailyNewItemsResp);
+   	// 查看每日新品
+	// BItemMgmtServiceProto.GetItemDetail, EditItem
+}

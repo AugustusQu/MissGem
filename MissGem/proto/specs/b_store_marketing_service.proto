@@ -1,0 +1,120 @@
+syntax = "proto3";
+package com.turtle.b.store.marketing;
+option java_package = "com.lz.turtle.proto.b";
+option java_outer_classname = "BStoreMarketingServiceProto";
+option objc_class_prefix = "TIDB";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForStoreMarketing {
+	SUCCESS = 0;//成功
+	FAILED = 1;//失败
+}
+
+//获取店铺折扣信息
+message GetStoreRebateReq{
+	int64 store_id = 1;
+}
+
+message GetStoreRebateResp{
+	bool is_all_store = 1;//是否全店促销
+	repeated com.turtle.sharingmsgdef.ItemSimpleInfo items = 2;//所有促销商品（非全店促销时使用）
+	string rebate_name = 3;//促销名称
+	float rebate = 4;//折扣值（打几折）
+	int64 begin_time = 5;//开始时间
+	int64 end_time = 6;//结束时间
+}
+
+//店铺折扣信息
+message StoreRebateInfo{
+	bool is_all_store = 1;//是否全店促销
+	repeated int64 item_ids = 2;//所有促销商品（非全店促销时使用）
+	string rebate_name = 3;//促销名称
+	float rebate = 4;//折扣值（打几折）
+	int64 begin_time = 5;//开始时间
+	int64 end_time = 6;//结束时间
+}
+
+//添加店铺折扣信息
+message AddStoreRebateReq{
+	int64 store_id = 1;
+	StoreRebateInfo rebate = 2;
+}
+
+message AddStoreRebateResp{
+	ErrorCodeForStoreMarketing error_code = 1;
+}
+
+//修改店铺折扣信息
+message UpdateStoreRebateReq{
+	int64 store_id = 1;
+	StoreRebateInfo rebate = 2;
+}
+
+message UpdateStoreRebateResp{
+	ErrorCodeForStoreMarketing error_code = 1;
+}
+
+//删除店铺折扣信息
+message DeleteStoreRebateReq{
+	int64 store_id = 1;
+}
+
+message DeleteStoreRebateResp{
+	ErrorCodeForStoreMarketing error_code = 1;
+}
+
+message CarouselMessage{
+	int64 carouse_message_id = 1;
+	//int64 store_id = 2;//店铺id
+	com.turtle.sharingmsgdef.CarouselType carouse_type = 3;//轮播类别
+	string carouse_message = 4;//轮播内容，最大15字
+	int64 item_id = 5;//关联商品id
+	com.turtle.sharingmsgdef.MgmtItemInfo item = 6;
+}
+
+//更新轮播消息
+message AddAndUpdateCarouselMessageReq {
+	repeated CarouselMessage carousel_message = 1;
+	int64 store_id = 2;
+}
+message AddAndUpdateCarouselMessageResp {
+	ErrorCodeForStoreMarketing error_code = 1;
+	repeated CarouselMessage carousel_message = 2;
+}
+
+//删除轮播消息
+message DeleteCarouselMessageReq {
+	int64 carouse_message_id = 1;	
+}
+message DeleteCarouselMessageResp {
+	ErrorCodeForStoreMarketing error_code = 1;
+}
+
+//获取轮播消息
+message GetCarouselMessagesReq {
+	int64 store_id = 1;//店铺ID
+}
+message GetCarouselMessagesResp {
+	repeated CarouselMessage carouse_messages = 1;
+}
+
+//店铺营销管理
+service StoreMarketingService {
+	//获取店铺折扣信息
+	rpc GetStoreRebate(GetStoreRebateReq) returns (GetStoreRebateResp);
+	//添加店铺折扣信息
+	rpc AddStoreRebate(AddStoreRebateReq) returns (AddStoreRebateResp);
+	//修改店铺折扣信息
+	rpc UpdateStoreRebate(UpdateStoreRebateReq) returns (UpdateStoreRebateResp);
+	//删除店铺折扣信息
+	rpc DeleteStoreRebate(DeleteStoreRebateReq) returns (DeleteStoreRebateResp);
+	
+	
+	//添加或者更新轮播消息
+	rpc AddAndUpdateCarouselMessage(AddAndUpdateCarouselMessageReq) returns (AddAndUpdateCarouselMessageResp);
+	//删除轮播消息
+	rpc DeleteCarouselMessage(DeleteCarouselMessageReq) returns (DeleteCarouselMessageResp);
+	//获取轮播消息列表
+	rpc GetCarouselMessages(GetCarouselMessagesReq) returns (GetCarouselMessagesResp);
+}

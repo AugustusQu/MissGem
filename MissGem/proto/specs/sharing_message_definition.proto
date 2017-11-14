@@ -1,0 +1,539 @@
+syntax = "proto3";
+
+package com.turtle.sharingmsgdef;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "SharingMessageDefinitionProto";
+option objc_class_prefix = "TID";
+
+message Int32Value{
+	int32 int_value = 1;
+}
+
+message Int64Value{
+	int64 int_value = 1;
+}
+
+message StringValue{
+	string value = 1;
+}
+
+message UserClickEnum {
+	int32 login_click_using_mobile = 100000;
+	int32 discover_click_chat = 200000;
+	int32 message_click_stores = 300000;
+	int32 cart_click_item = 400000;
+	int32 order_click_all = 500101;
+	int32 my_click_favorite = 600101;
+}
+
+message StoreHead {
+	StoreSimpleInfo store_simple_info = 1;
+	DegreeNumEnum degree_num = 2;//几度关系(自己和该店店主的关系)
+	PeopleRelation relation = 3;//关系
+	string relation_other = 4;//如果relation为0，则读取该字段
+	RecommendStatus recommend_status = 5;//推荐数据(只有在已关注的情况下才会有)
+	StoreFavoriteStatus favorite_status = 6;//关注状态（查看别人首页时用到）
+	int64 attention_store_order_key = 7;//关注店铺的排序key
+	//int32 tx_num = 12;//交易数量
+}
+
+message FriendHead {
+	UserSimpleInfo friend_simple_info = 1;
+	DegreeNumEnum degree_num = 2;//几度关系
+	PeopleRelation relation = 3;//关系
+	string relation_other = 4;//如果relation为0，则读取该字段
+	bool is_seller = 5;//是否是卖家
+	RecommendStatus recommend_status = 6;//推荐数据(如果是好友并且是卖家才会有数据)
+	bool is_send_add_friend_request = 7;//是否已发出加好友申请(仅当2度关系时使用)
+}
+
+message ItemInfo {
+	ItemSimpleInfo item_simple_info = 1;
+	bool is_favorite = 2; // 是否收藏了
+	int32 favorite_num = 3; // 收藏数
+	repeated com.turtle.sharingmsgdef.ItemSkuInfo item_sku_info = 4;
+	com.turtle.sharingmsgdef.Int32Value tax = 5;//税费
+	com.turtle.sharingmsgdef.Int32Value freight = 6;//运费
+	string brand_location = 7; //品牌所在地
+	repeated ItemMedia item_cover_info = 8;//封面图片
+	repeated ItemDescInfo item_desc_info = 9;
+	int32 inventory = 10;//库存
+}
+
+enum PeopleRelation{
+	OTHER = 0;//没有，需要手动填写
+	COLLEAGUE = 1;//同事
+	SCHOOLMATE = 2;//同学
+	FRIEND = 3;//朋友
+	FAMILY = 4;//家人
+	INVITATION = 5;//邀请
+}
+
+enum StoreFavoriteStatus{
+	NO = 0;//未关注
+	ING = 1;//申请中
+	YES = 2;//已关注
+}
+
+enum RecommendStatus{
+	CAN_NOT_WRITE = 0;//不可以推荐
+	ALREADY_WRITE = 1;//已经填写
+	CAN_WRITE = 2;//可以填写
+}
+
+enum FriendStatus{
+	NO_FRIEND = 0;//非好友
+	ADDING_FRIEND = 1;//已申请
+	YES_FRIEND = 2;//已是好友
+}
+
+//性别
+enum GenderEnum{
+	unknow = 0;//未设置
+	female = 1;//女
+	male = 2;//男
+}
+
+//文件类型
+enum FileType {
+	unknow_file = 0; //未设置
+	image = 1; //图片
+	audio = 2; //音频
+	movie = 3; //视频
+}
+
+//用户详情
+message UserInfo{
+	UserSimpleInfo userSimpleInfo = 1;
+	//int32 credit = 2;//信任积分
+	int32 favorite_cnt = 3;//收藏商品数量
+	int32 store_cnt = 4;//收藏店铺数量
+	int32 friend_cnt = 5;//好友数量
+	int32 my_store_cnt = 6;//我的店铺数量
+	int32 my_topic_cnt = 7;//我的话题数量
+}
+
+//用户概要信息
+message UserSimpleInfo{
+	int64 user_id = 1;
+	string nickname = 2;//昵称
+	string photo = 3;//头像
+	com.turtle.sharingmsgdef.GenderEnum gender = 4;//性别
+	bool is_seller = 5;//卖家id（如果是卖家，则有此数据）
+	string mobile_num = 6;//手机号码
+	string account = 7;//账号
+	string signature = 8;//签名
+	string qr_code = 9;//二维码
+	Int32Value age = 10;//年龄
+	string area = 11;//地区
+	string nickname_pinyin = 12;//用户昵称（汉字已转为拼音）
+	string im_account = 13;//im服务器登陆账号
+	string im_token = 14;//im服务器登陆token
+}
+
+
+//用户收货地址
+message UserAddress{
+	int64 user_address_id = 1;//主键id
+	string pickup_name = 2;//收货人名字
+	string pickup_phone_num = 3;//收货人电话
+	int32 pickup_address_province = 4;//收货人地址-省
+	int32 pickup_address_city = 5;//收货人地址-市
+	int32 pickup_address_county = 6;//收货人地址-县
+	string pickup_address_other = 7;//收货人地址-其他地址
+}
+
+//店铺概要信息
+message StoreSimpleInfo {
+	int64 store_id = 1; // 店铺ID
+	string store_photo_url = 2; //店铺头像url
+	string store_name = 3; // 店铺名称
+	string store_qr_code = 4;//店铺二维码
+	StoreCoverLayout store_cover_layout = 5;//店铺在平台首页的展示格式
+	string store_intro = 6;//店铺简介
+	string store_location = 7;//店铺位置
+	int64 seller_id = 8;//卖家id
+	int64 open_time = 9;//开店时间
+	string service_telephone = 10;//服务电话
+}
+enum StoreCoverLayout {
+	L1x1=0;//1个卡片
+	L1x2=1;//2个卡片（总上架物品>=2，当不足时，按1展示）
+	L2x2=2;//默认，4个卡片（总上架物品>=4，当不足时，按1或2展示，1《＝》1，2/3《＝》2）
+	LDAILY_RANDOM=3;//每日随机：每日随机选择上述3种之一展示
+}
+
+
+// 商品的媒体数据
+message ItemMedia {
+	FileType media_type = 1;
+	string media_url = 2;
+	string media_name = 3;
+}
+
+// 商品的描述信息（文字+图片）
+message ItemDescInfo {
+	string item_intro = 1;
+	repeated ItemMedia item_media = 2;
+}
+
+
+//商品概要信息
+message ItemSimpleInfo{
+	int64 item_id = 1;//商品id
+	string item_name = 2;//商品名字
+	string item_intro = 3;//商品简介
+	string item_img_cover_main = 4;//封面图主图
+	int32 item_retail_price = 7;//零售价格
+	Int32Value item_discount_price = 8;//促销价格
+	Int32Value group_buying_price = 9; // 团购价格
+	Int32Value group_buying_size = 10; // 团购人数
+	int64 create_time = 11;//创建商品时间
+	Int32Value max_usable_coin_in_fen = 12; //可用代鼠币折算的上限，以分为单位
+}
+
+//商品概要信息+收藏数据
+message ItemCollectedSimpleInfo{
+	com.turtle.sharingmsgdef.ItemSimpleInfo itemInfo = 1;
+	bool is_collected = 2; //是否收藏了该商品
+}
+
+//商品属性 颜色、大小等等
+message ItemAttributeInfo{
+	string attribute_name = 1;
+	string attribute_value = 2;
+}
+
+//商品标签
+enum ItemTag{
+	ITEM_TAG_NONE = 0;//无
+	ITEM_TAG_NEW = 1;//新品
+	ITEM_TAG_HOT = 2;//热销
+}
+
+//收藏夹信息
+message FavoriteCategoryInfo{
+	int64 category_id = 1;//收藏夹ID
+	string category_name = 2;//收藏夹标题
+	int32 item_num = 3;//收搜藏夹下所有商品数量
+	string category_intro = 4;//收藏夹简介
+	string category_image = 5;//收藏夹图标
+	bool is_visible_only_to_me = 6;//是否仅自己可见，“我的私人专辑”
+}
+
+//商品评论
+message ItemComment{
+	UserSimpleInfo userSimpleInfo = 1;//发表评论者信息
+	string comment = 2;//评论内容
+	int32 star = 3;//星级
+	int64 time = 4;//评论时间
+	int64 primary_id = 5;//主键id
+}
+
+//商品拼团信息
+message ItemGroupBuyInfo{
+}
+
+//购物车里以店铺分组的数据
+message CartStoreItemInfo{
+	StoreSimpleInfo store_simple_info = 1;//店铺信息
+	repeated CartItemInfo item_info = 2;//商品信息
+}
+
+//购物车里一个商品的数据
+message CartItemInfo{
+	int64 primary_key_id = 1;//主键id
+	ItemSimpleInfo item_simple_info = 2;//商品简要信息
+	ItemSkuInfo item_sku_info = 3;//商品sku信息
+	int32 item_cnt = 4;//商品个数
+	ItemAgentLevelForUser item_agent_level = 5;//用户单品代理级别信息
+	com.turtle.sharingmsgdef.Int32Value tax = 6;//税费
+	com.turtle.sharingmsgdef.Int32Value freight = 7;//运费
+}
+
+//商品sku信息
+message ItemSkuInfo{
+	int64 item_sku_id = 1;
+	int32 inventory = 4;//库存
+	repeated ItemSkuAttributeAndValue item_sku = 5;
+}
+
+//商品sku属性信息
+message ItemSkuAttributeAndValue{
+	int32 sku_attribute_id = 1;//sku属性id
+	string sku_attribute_name = 2;//sku属性名字
+	string sku_attribite_value = 3;//sku属性值
+}
+
+//几度关系
+enum DegreeNumEnum{
+	DEGREE_NULL = 0;//空
+	DEGREE_ONE = 1;//一度关系
+	DEGREE_TWO = 2;//二度关系
+	DEGREE_THREE = 3;//三度关系
+	DEGREE_SELF = 4;//自己的店铺或者自己的首页
+}
+
+//交易状态【可进行的操作-买方还是卖方】 <所归属的订单状态>
+enum TransactionStatus {
+	NOT_PAID = 0; // 待付款【取消订单-买家】<待付款>
+	NOT_PAID_TIMEOUT = 1;//未付款已超时【删除订单-买家】<代付款>
+	CANCELED = 2;//已取消【删除订单-买家&卖家】<已完成>
+	TO_BE_DELIVERED = 3; // 待发货【确认发货-卖家】<进行中>
+	ITEM_DELIVERED = 4; //已发货-未收到（待收货）【确认收货-买家 延迟收货-买家】<进行中>
+	ITEM_DELAY_REVEIPT = 5;//已发货-未收到（待发货，但是已经延迟发货）<进行中>
+	ITEM_RECEIVED_AND_NO_CONFIRM = 6;//快递已签收-未在平台上确认收货（待确认）【确认收货-买家】<进行中>
+	ITEM_RECEIVED_AND_CONFIRMED = 7;//已收货并且已确认（待评价）【评价商品&删除订单-买家】<待评价>
+	ORDER_REVIEWED = 8;//已评价【删除订单-买家&卖家】<已完成>
+	ORDER_ITEM_RETURN = 9;//退货中<退款>
+	ORDER_ITEM_RETURN_REFUSE = 10;//退货已拒绝<退款>
+	ORDER_ITEM_RETURN_FINISH = 11;//退货已完成<退款>
+}
+
+enum ItemReturnStatus{
+	NONE = 0;//无退货状态
+	ITEM_RETURN_APPLY = 1;//买家已申请退货【同意退货-卖家】<退款>
+	ITEM_RETURN_AGREE = 2;//卖家已同意退货【确认收到退货商品-卖家】<退款>
+	ITEM_RETURN_REFUSE = 3;//退货已拒绝<退款>
+	REFUND_PROCESSING = 4;//卖家已退货款【确认收到退货款-买家】<退款>
+	SYSTEM_RETURN_MONEY_SUBMIT = 5;//系统已经提交退款流程，等待第三方处理
+	MONEY_RECEIVED = 6;//买家已收到退货款，系统已经提示我们服务器退款成功【删除订单-买家】<已完成>
+}
+
+//订单切页类型
+enum OrderStatus {
+	BUYER_TO_BE_PAID = 0; // 待付款
+	BUYER_TO_BE_RECEIVED = 1; //待收货
+	BUYER_TO_BE_REVIEW = 2;//待评价
+	BUYER_REFUND = 3; // 退货
+	BUYER_TO_BE_FINISH = 4;//完成（评价后或者退款成功的订单）
+	
+	SELLER_TO_BE_DELIVERED = 5; //待发货
+	SELLER_TO_BE_PAID = 6; // 待付款
+	SELLER_TO_BE_REVIEW = 7; //待评价
+	SELLER_REFUND = 8; // 退货
+	SELLER_TO_BE_FINISH = 9;//完成（评价后或者退款成功的订单）
+}
+
+//订单里的道具信息
+message OrderItemInfo{
+	int64 primary_key = 1;//主键id
+	ItemSimpleInfo item_simple_info = 2;
+	ItemSkuInfo item_sku_info = 3;
+	int32 item_cnt = 4;
+	int32 item_price = 5;//购买时商品的价格
+	ItemBuyType item_buy_type = 6;//购买类型
+	int32 return_money_max = 8;//退货时可退钱的最大值
+	bool can_return = 9;//是否支持退货
+	OrderItemReturnInfo item_return_info = 10;//退货信息
+}
+
+//订单商品退货信息
+message OrderItemReturnInfo{
+	Int64Value apply_return_time = 1;//申请退货时间
+	StringValue return_reason = 2;//退货理由
+	Int32Value return_money = 3;//退款金额
+	ItemReturnStatus item_return_status = 4;//退货状态
+}
+
+//订单简要信息
+message OrderSimpleInfo {
+	int64 order_id = 1;  // 订单ID
+	StoreSimpleInfo store_simple_info = 2;
+	repeated OrderItemInfo items = 3;
+	int32 order_price_total = 4; // 实际支付的钱
+	com.turtle.sharingmsgdef.Int32Value freight = 5;//运费
+	com.turtle.sharingmsgdef.Int32Value tax = 6;//税费
+	TransactionStatus tx_status = 7; // 交易状态
+	bool group_buy_success = 8;//组团是否已经成功（未成功的组团虽然已支付成功，但是卖家仍然不可以发货）
+	string logistics_code = 9;//快递公司名字编号
+	string waybill = 10;//运单号
+	int64 buyer_id = 11;//买家id
+}
+
+//订单状态和交易状态
+message OrderStatusAndTransactionStatus{
+	int64 order_id = 1;
+	OrderStatus order_status = 2;
+	TransactionStatus order_transaction_status = 3;
+	OrderStatus order_status_old = 4;
+}
+
+message OrderItemReturnStatusChange{
+	int64 order_id = 1;
+	int64 order_item_primary_key = 2;//OrderItemInfo.primary_key
+	ItemReturnStatus item_return_status = 3;
+}
+
+//物流每一步信息
+message ItemOrderLogisticsStepInfo{
+	string time = 1;
+	string context = 2;
+}
+
+//物流公司信息
+message LogisticsCompanyInfo{
+	string name = 1;//物流公司名字
+	string code = 2;//物流公司编号
+	bool general = 3;//是否是常用的
+}
+
+//卖家简要信息
+message SellerSimpleInfo{
+	int64 user_id = 1;
+	string legal_user_id = 11;//身份证号
+	string legal_user_name = 12;//身份证名字
+	string wechat_id = 13;//微信
+	string qq_num = 14;//QQ
+}
+
+//推荐信息
+message RecommendInfo{
+	string message_info = 1;//推荐内容
+	int64 add_time = 2;//添加时间
+}
+// 营销推广和添加代理商品用
+message PublishedItem {
+	int64 item_id = 1;//商品ID
+	string item_name = 2;//商品标题
+	int32 item_price = 3;//零售价格
+	int32 sales_volume = 4;//销量
+	int32 inventory = 5;//库存
+	int64 item_publish_time = 6;//商品上架时间
+}
+
+//轮播类型
+enum CarouselType{
+	UPDATE = 0;//更新
+	HOT = 1;//热门
+	LOOKINTO = 2;//直击
+	DISCOVER = 3;//发现
+	RECOMMEND = 4;//推荐
+	PROMOTION = 5;//促销
+}
+
+// 商品信息
+message MgmtItemInfo {
+	com.turtle.sharingmsgdef.ItemSimpleInfo item_simple_info = 1;
+	int32 sales_volume = 2;//销量
+	int32 inventory = 3;//库存
+}
+
+//
+message ItemAgentLevelForUser{
+	int32 agent_level = 3;//代理等级
+	int32 agent_price = 4;//代理价格
+	int32 first_buy_num_limit = 5;//首次拿货量要求
+	int32 last_buy_num_limit = 6;//后续每次拿货量要求
+	bool is_first_buy = 7;//是否首次购买
+}
+
+//序列号不能修改
+enum IncomeAndExpensesType{
+	income_item_order = 0;//收入-订单
+	expenses_withdraw = 1;//支出_提现
+	expenses_item_back = 2;//支出_退货
+	open_store = 3;//开户（不属于收入也不属于支出）
+	expense_buy_coin = 4;//支出_购买袋鼠币
+	income_store_payment = 5;//充值
+}
+
+enum PaymentPlatform{
+	wx = 0;//微信
+	alipay = 1;//支付宝
+	upacp = 2;//银联
+}
+
+//支付用途
+enum PaymentFunctionEnum{
+	ITEM_OREDER = 0;//支付订单
+	STORE_PAYMENT = 1;//店铺充值
+}
+
+//商品购买类型
+enum ItemBuyType{
+	NORMAL = 0;//普通购买
+	AGENT = 1;//代理购买
+	GROUP_BUY = 2;//团购
+}
+
+//店铺提现状态
+enum WithdrawStatus{
+	APPLY = 0;//申请提现
+	BEGIN = 1;//服务器已经提交申请
+	END = 2;//已经提现成功
+}
+
+//提现到账时间
+enum WithdrawTimeType{
+	TOW_HOURS = 0;//两小时到账
+	NEXT_DAY = 1;//次日24点前到账
+}
+
+//添加好友请求消息
+message RequestAddFriendMessageInfo{
+	com.turtle.sharingmsgdef.UserSimpleInfo user_simple_info = 1;
+	string why_add = 2;//添加理由
+}
+
+//关注店铺请求消息
+message RequestAddStoreMessageInfo{
+	int64 primary_id = 1;//主键id
+	com.turtle.sharingmsgdef.UserSimpleInfo user_simple_info = 2;
+	string why_add = 3;//添加理由
+	com.turtle.sharingmsgdef.StoreSimpleInfo store = 4;//请求关注的店铺简要信息
+}
+
+enum QrCodeType{
+	user = 0;//用户二维码
+	store = 1;//店铺二维码
+}
+
+//二维码
+message QrCode{
+	QrCodeType type = 1;
+	string value = 2;//二维码内容
+}
+
+//袋鼠币收入支出类型（序列号不能修改）
+enum CoinIncomeAndPayoutType{
+	income_payment = 0;//收入-充值
+	income_return_item = 1;//收入-退货
+	
+	payout_buy_item = 100;//支出-购买商品
+}
+
+
+message CoinLogInfo{
+	int64 primary_key = 1;
+	bool is_income = 2;//true：收入 false：支出
+	CoinIncomeAndPayoutType type = 3;
+	int32 num = 4;//本次数量
+	int64 time = 5;//操作时间
+}
+
+//订单状态和数量
+message OrderStatusAndNum{
+	com.turtle.sharingmsgdef.OrderStatus order_status = 1;
+	int32 order_num = 2;
+}
+
+message StoreCustmerSimpleInfo{
+	UserSimpleInfo user_simple_info = 1;
+	int64 time = 2;//成为客户的时间点
+}
+enum AgentTypeEnum{
+	AGENT_TYPE_STORE = 0;//全店代理
+	AGENT_TYPE_ITEM = 1;//单品代理
+}
+
+message AgentLevel{
+	AgentTypeEnum agent_type = 1;
+	int32 agent_level = 2;
+}
+
+enum SalesAmountWarning {
+	GREEN = 0;
+	YELLOW = 1;
+	RED = 2;
+}

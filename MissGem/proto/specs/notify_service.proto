@@ -1,0 +1,186 @@
+syntax = "proto3";
+
+package com.turtle.notify;
+option java_package = "com.lz.turtle.proto";
+option java_outer_classname = "NotifyServiceProto";
+option objc_class_prefix = "TID";
+
+import "sharing_message_definition.proto";
+
+//客户端显示类型
+enum NotifyViewTypeEnum{
+	SELLER_ACTIVITY = 0;//商家活动
+	TRANSACTION = 1;//交易
+}
+
+//实际推送消息类型
+enum NotifyMessageTypeEnum{
+	REQUEST_ADD_FRIEND = 0;
+	REPLAY_ADD_FRIEND = 1;
+	DELETE_FRIEND = 2;
+	WITHDRAW = 3;
+	ORDER_PAYMENT = 4;
+	REQUEST_ADD_STORE = 5;
+	REPLAY_ADD_STORE = 6;
+	DELETE_STORE = 7;
+	ORDER_TX_STATUS_CHANGE = 8;
+	GROUP_BUY_OPEN = 9;
+	TEST = 10;
+}
+
+//请求添加好友通知
+message RequestAddFriendNotifyReq{
+	int64 user_id = 1;
+}
+
+message RequestAddFriendNotifyResp{
+	com.turtle.sharingmsgdef.RequestAddFriendMessageInfo request_add_friend_message_info = 1;
+}
+
+//同意添加好友通知
+message ReplayAddFriendNotifyReq{
+	int64 user_id = 1;
+}
+message ReplayAddFriendNotifyResp{
+	com.turtle.sharingmsgdef.FriendHead friend = 1;
+}
+
+//删除好友通知
+message DeleteFriendNotifyReq{
+	int64 user_id = 1;
+}
+
+message DeleteFriendNotifyResp{
+	int64 friend_user_id = 1;
+}
+
+//提现进展通知
+message WithdrawNotifyReq{
+	int64 user_id = 1;
+}
+
+message WithdrawNotifyResp{
+	int64 time = 1;
+	com.turtle.sharingmsgdef.WithdrawStatus status = 2;//提现进展状态
+	int64 order_id = 3;//提现订单id
+}
+
+//请求关注店铺通知
+message RequestAddStoreNotifyReq{
+	int64 user_id = 1;
+}
+message RequestAddStoreNotifyResp{
+	com.turtle.sharingmsgdef.RequestAddStoreMessageInfo request_add_store_message_info = 1;
+}
+
+//同意店铺通知
+message ReplayAddStoreNotifyReq{
+	int64 user_id = 1;
+}
+message ReplayAddStoreNotifyResp{
+	com.turtle.sharingmsgdef.StoreHead my_store_heads = 1;
+}
+
+//删除店铺通知
+message DeleteStoreNotifyReq{
+	int64 user_id = 1;
+}
+
+message DeleteStoreNotifyResp{
+	int64 store_id = 1;
+}
+
+//订单交易状态变化通知
+message OrderTransactionStatusChangeNotifyReq{
+}
+
+message OrderTransactionStatusChangeNotifyResp{
+	OrderTransactionStatusChangeNotify notify_info = 1;
+}
+
+message OrderTransactionStatusChangeNotify{
+	int64 order_id = 1;
+	int64 store_id = 2;//推送给卖家的时候需要
+	com.turtle.sharingmsgdef.TransactionStatus tx_status_old = 3;
+	com.turtle.sharingmsgdef.TransactionStatus tx_status_new = 4;
+	com.turtle.sharingmsgdef.OrderStatus order_status_old = 5;
+	com.turtle.sharingmsgdef.OrderStatus order_status_new = 6;
+	bool is_seller = 7;//是否是卖家，因为某一个状态变化要通知到买卖双方，所以客户端接收到该消息时要知道自己是买方还是卖方
+	bool re_login = 8;//是否是重新登陆后发送的
+}
+
+//开团购通知
+message GroupByOpenNotifyReq{
+}
+message GroupByOpenNotifyResp{
+	GroupByOpenNotify notify_info = 1;
+}
+message GroupByOpenNotify{
+	int64 item_id = 1;
+	string item_name = 2;
+	int32 group_buy_price = 3;
+}
+
+//通知退款成功，钱真正到账的时间
+message RefundSuccessNotifyReq{
+}
+
+message RefundSuccessNotifyResp{
+	int64 order_id = 1;
+	int64 store_id = 2;//推送给卖家的时候需要
+	com.turtle.sharingmsgdef.OrderStatus order_status_old = 3;
+	com.turtle.sharingmsgdef.OrderStatus order_status_new = 4;
+	bool is_seller = 5;//是否是卖家，因为某一个状态变化要通知到买卖双方，所以客户端接收到该消息时要知道自己是买方还是卖方
+}
+
+//通知消息内容
+message NotifyMessageInfo{
+	int64 primary_key = 1;
+	NotifyMessageTypeEnum type = 2;
+	bytes notify_value = 3;//proto文件序列化后的自己数组
+	int64 create_time = 4;
+}
+
+//获取通知消息列表
+message GetNotifyMessageListReq{
+	int64 last_primary_key = 1;
+	NotifyViewTypeEnum view_type = 2;
+}
+
+message GetNotifyMessageListResp{
+	repeated NotifyMessageInfo notify_info = 1;
+	bool finish = 2;
+}
+
+//刷新通知消息列表
+message RefreshNotifyMessageListReq{
+	int64 first_primary_key = 1;
+	NotifyViewTypeEnum view_type = 2;
+}
+
+message RefreshNotifyMessageListResp{
+	repeated NotifyMessageInfo notify_info = 1;
+}
+
+message TestNotifyReq{
+}
+
+message TestNotifyResp{
+	int32 times = 1;//第几次推送
+}
+
+// 消息
+service NotifyService {
+	rpc RequestAddFriendNotify(RequestAddFriendNotifyReq) returns (stream RequestAddFriendNotifyResp);
+    rpc ReplayAddFriendNotify (ReplayAddFriendNotifyReq) returns (stream ReplayAddFriendNotifyResp);
+	rpc DeleteFriendNotify(DeleteFriendNotifyReq) returns (stream DeleteFriendNotifyResp);
+	rpc WithdrawNotify (WithdrawNotifyReq) returns (stream WithdrawNotifyResp);
+	rpc RequestAddStoreNotify(RequestAddStoreNotifyReq) returns (stream RequestAddStoreNotifyResp);
+	rpc ReplayAddStoreNotify(ReplayAddStoreNotifyReq) returns (stream ReplayAddStoreNotifyResp);
+	rpc DeleteStoreNotify(DeleteStoreNotifyReq) returns (DeleteStoreNotifyResp);
+	rpc OrderTransactionStatusChangeNotify(OrderTransactionStatusChangeNotifyReq) returns (OrderTransactionStatusChangeNotifyResp);
+	rpc GroupByOpenNotify(GroupByOpenNotifyReq) returns (GroupByOpenNotifyResp);
+	rpc GetNotifyMessageList(GetNotifyMessageListReq) returns (GetNotifyMessageListResp);
+	rpc RefreshNotifyMessageList(RefreshNotifyMessageListReq) returns (RefreshNotifyMessageListResp);
+	rpc TestNotify(TestNotifyReq) returns (TestNotifyResp);
+}

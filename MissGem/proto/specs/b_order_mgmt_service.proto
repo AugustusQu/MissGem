@@ -1,0 +1,125 @@
+syntax = "proto3";
+package com.turtle.b.order;
+option java_package = "com.lz.turtle.proto.b";
+option java_outer_classname = "BOrderMgmtServiceProto";
+option objc_class_prefix = "TIDB";
+
+import "sharing_message_definition.proto";
+
+enum ErrorCodeForBOrderService{
+	SUCCESS = 0;
+	FAILED = 1;
+}
+
+// 获得订单列表
+message GetOrderListReq {
+    int64 store_id = 1;  // 店铺ID
+    com.turtle.sharingmsgdef.OrderStatus order_status = 2; // 所查询的订单状态
+}
+
+message GetOrderListResp {
+    repeated com.turtle.sharingmsgdef.OrderSimpleInfo my_orders = 1;
+	com.turtle.sharingmsgdef.OrderStatus order_status = 2;
+}
+
+// 订单详情
+message GetOrderDetailReq {
+    int64 order_id = 2;  // 订单ID
+}
+
+message GetOrderDetailResp {
+    com.turtle.sharingmsgdef.OrderSimpleInfo order_simple_info = 1; // 订单信息
+	com.turtle.sharingmsgdef.UserAddress address = 2;
+    string pay_tx_id = 3; // 支付交易号
+    int64 create_time_seconds = 4; // 创建时间
+    int64 paid_time_seconds = 5; // 付款时间
+    int64 delivery_time_seconds = 6; // 发货时间
+    int64 close_deal_time_seconds = 7; // 成交时间
+}
+
+message RemoveOrderReq {
+    int64 order_id = 1;  // 订单ID
+}
+message RemoveOrderResp {
+    ErrorCodeForBOrderService error_code = 1;
+	int64 order_id = 2;  // 订单ID
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 3;//订单新的状态
+	int64 store_id = 4;
+}
+
+//确认发货 （把订单状态从待发货变为已发货）
+message ConfirmDeliveredReq{
+	int64 order_id = 1;  // 订单ID
+	string logistics_code = 2;//快递公司名字编号
+	string waybill = 3;//运单号
+}
+
+message ConfirmDeliveredResp{
+	ErrorCodeForBOrderService error_code = 1;
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 2;//订单新的状态
+	int64 store_id = 3;
+}
+
+//同意退货
+message AgreeReturnItemReq{
+	int64 item_order_id = 1;//订单id
+	int64 order_item_primary_key = 2;//OrderItemInfo.primary_key
+}
+
+message AgreeReturnItemResp{
+	ErrorCodeForBOrderService error_code = 1;
+	com.turtle.sharingmsgdef.OrderItemReturnStatusChange order_item_return_status = 2;//订单商品新的状态
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 3;//订单新的状态
+	int64 store_id = 4;
+}
+
+//拒绝退货
+message RefuseReturnItemReq{
+	int64 item_order_id = 1;//订单id
+	int64 order_item_primary_key = 2;//OrderItemInfo.primary_key
+}
+
+message RefuseReturnItemResp{
+	ErrorCodeForBOrderService error_code = 1;
+	com.turtle.sharingmsgdef.OrderItemReturnStatusChange order_item_return_status = 2;//订单商品新的状态
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 3;//订单新的状态
+	int64 store_id = 4;
+}
+
+//以收到货物，进行退款操作
+message ReturnItemMoneyReq{
+	int64 item_order_id = 1;//订单id
+	int64 order_item_primary_key = 2;//OrderItemInfo.primary_key
+}
+
+message ReturnItemMoneyResp{
+	ErrorCodeForBOrderService error_code = 1;
+	com.turtle.sharingmsgdef.OrderItemReturnStatusChange order_item_return_status = 2;//订单商品新的状态
+	com.turtle.sharingmsgdef.OrderStatusAndTransactionStatus order_status = 3;//订单新的状态
+	int64 store_id = 4;
+}
+
+// 订单管理
+service OrderMgmtService {
+    // 获得订单列表
+    rpc GetOrderList(GetOrderListReq) returns (GetOrderListResp);
+
+    // 订单详情
+    rpc GetOrderDetail(GetOrderDetailReq) returns (GetOrderDetailResp);
+
+    // 删除订单
+    rpc RemoveOrder(RemoveOrderReq) returns (RemoveOrderResp);
+	
+	//确认发货
+	rpc ConfirmDelivered(ConfirmDeliveredReq) returns (ConfirmDeliveredResp);
+	
+	//同意退货
+	rpc AgreeReturnItem(AgreeReturnItemReq) returns (AgreeReturnItemResp);
+	
+	//拒绝退货
+	rpc RefuseReturnItem(RefuseReturnItemReq) returns (RefuseReturnItemResp);
+	
+	//退款
+	rpc ReturnItemMoney(ReturnItemMoneyReq) returns (ReturnItemMoneyResp);
+}
+
