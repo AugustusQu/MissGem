@@ -17,8 +17,14 @@ pod 'RAMAnimatedTabBarController', '~>3.0.0'
 pod 'IBAnimatable', '~>5.0.0'
 pod 'lottie-ios', '~>2.1.4'
 pod 'Realm', '~>3.0.2'
-
+#pod 'JSONModel'
+pod 'YTKNetwork', '~>2.0.4'
+pod 'MJExtension', '~>3.0.13'
+pod 'AFNetworking', '~>3.1.0'
 pod 'SAMKeychain', '~>1.5.3'
+pod 'HMSegmentedControl', '~>1.5.4'
+pod 'Material', '~>2.12.16'
+pod 'JazzHands', '~>2.0.8'
 
 #pod 'FDFullsreenPopGesture'
 

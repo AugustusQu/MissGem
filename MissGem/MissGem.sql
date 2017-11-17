@@ -46,7 +46,7 @@ CREATE TABLE `column` (
 --  Table structure for `column_item`
 -- ----------------------------
 DROP TABLE IF EXISTS `column_item`;
-CREATE TABLE `column` (
+CREATE TABLE `column_item` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `column_pic` varchar(255) DEFAULT NULL COMMENT '专栏图片，1张',
   `column_title` varchar(255) NOT NULL COMMENT '专栏标题',
@@ -220,17 +220,31 @@ CREATE TABLE `product_comment` (
 -- ----------------------------
 DROP TABLE IF EXISTS `merchant`;
 CREATE TABLE `merchant` (
-  `id` bigint(20) NOT NULL COMMENT '商家ID',
-  `store_id` int(11) DEFAULT NULL COMMENT '店铺ID',
+  `id` bigint(20) NOT NULL COMMENT '商家ID，目前只有我们自己一个商家',
+  `store_id` int(11) DEFAULT NULL COMMENT '店铺ID，只有一个',
   `store_name` varchar(255) DEFAULT NULL COMMENT '店铺名称',
-  `photo` varchar(255) DEFAULT NULL COMMENT '商家/店铺头像url (店主和店铺的头像相同)',
-  `product_num` int(11) DEFAULT NULL COMMENT '单品数',
-  `good_review_num` int(11) DEFAULT NULL COMMENT '好评数',
-  `transaction_num` int(11) DEFAULT NULL COMMENT '交易数',
+  `photo` varchar(255) DEFAULT NULL COMMENT '商家/店铺头像url ',
+  `product_num_id` bigint(20) DEFAULT NULL COMMENT '所有单品单品',
   `merchant_store_intro` varchar(255) DEFAULT NULL COMMENT '商家店铺简介',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+-- ----------------------------
+--  Table structure for `brand`
+-- ----------------------------
+DROP TABLE IF EXISTS `brand`;
+CREATE TABLE `brand` (
+  `id` bigint(20) NOT NULL COMMENT '品牌ID',
+  `merchant_id` int(11) DEFAULT NULL COMMENT '商家ID',
+  `brand_name` varchar(255) DEFAULT NULL COMMENT '品牌名称',
+  `brand_head_photo` varchar(255) DEFAULT NULL COMMENT '品牌头像url ',
+  `brand_background_image` varchar(255) DEFAULT NULL COMMENT '品牌背景图片url ',
+  `follow`  bit(1) DEFAULT NULL COMMENT '是否已经关注品牌',
+  `product_num_id` bigint(20) DEFAULT NULL COMMENT '所有单品单品',
+  `band_intro` varchar(255) DEFAULT NULL COMMENT '品牌简介',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 SET FOREIGN_KEY_CHECKS = 1;
