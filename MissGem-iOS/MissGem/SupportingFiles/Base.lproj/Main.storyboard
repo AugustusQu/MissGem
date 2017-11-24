@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -219,12 +218,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="0lh-fa-MvS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="49d-O0-UyA">
-                        <rightBarButtonItems>
-                            <barButtonItem title="筛选" id="V1v-6l-BiO"/>
-                            <barButtonItem title="时间" id="7br-x0-BDx"/>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="49d-O0-UyA"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="5he-YJ-b74" id="Kcw-On-oTO"/>
                     </connections>
