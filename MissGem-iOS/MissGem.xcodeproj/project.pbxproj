@@ -26,6 +26,22 @@
 		029F903A1FB9BBD600B0A5A4 /* GEMNotificationString.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F90391FB9BBD600B0A5A4 /* GEMNotificationString.m */; };
 		02CB27F81FB3477B0056C16D /* MissGemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB27F71FB3477B0056C16D /* MissGemTests.m */; };
 		02CB28031FB3477B0056C16D /* MissGemUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CB28021FB3477B0056C16D /* MissGemUITests.m */; };
+		02E17A921FCA531A008869EF /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17A861FCA531A008869EF /* Network.m */; };
+		02E17A931FCA531A008869EF /* UIViewController+Nav.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17A8A1FCA531A008869EF /* UIViewController+Nav.m */; };
+		02E17A941FCA531A008869EF /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17A8C1FCA531A008869EF /* WebViewController.m */; };
+		02E17A951FCA531A008869EF /* LaunchAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17A8F1FCA531A008869EF /* LaunchAdModel.m */; };
+		02E17A961FCA531A008869EF /* XHLaunchAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E17A901FCA531A008869EF /* XHLaunchAdManager.m */; };
+		02E17AA31FCA54F1008869EF /* LaunchVideoAd.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E17A981FCA54F1008869EF /* LaunchVideoAd.json */; };
+		02E17AA41FCA54F1008869EF /* video0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 02E17A991FCA54F1008869EF /* video0.mp4 */; };
+		02E17AA51FCA54F1008869EF /* video1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 02E17A9A1FCA54F1008869EF /* video1.mp4 */; };
+		02E17AA61FCA54F1008869EF /* LaunchImageAd.json in Resources */ = {isa = PBXBuildFile; fileRef = 02E17A9B1FCA54F1008869EF /* LaunchImageAd.json */; };
+		02E17AA71FCA54F1008869EF /* image4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02E17A9C1FCA54F1008869EF /* image4.jpg */; };
+		02E17AA81FCA54F1008869EF /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02E17A9D1FCA54F1008869EF /* image1.jpg */; };
+		02E17AA91FCA54F1008869EF /* image12.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02E17A9E1FCA54F1008869EF /* image12.gif */; };
+		02E17AAA1FCA54F1008869EF /* image0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02E17A9F1FCA54F1008869EF /* image0.jpg */; };
+		02E17AAB1FCA54F1008869EF /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02E17AA01FCA54F1008869EF /* image2.jpg */; };
+		02E17AAC1FCA54F1008869EF /* image11.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02E17AA11FCA54F1008869EF /* image11.gif */; };
+		02E17AAD1FCA54F1008869EF /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02E17AA21FCA54F1008869EF /* image3.jpg */; };
 		02E248D81FB99C3800ECB2AB /* GEMColumnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E248D61FB99C3800ECB2AB /* GEMColumnTableViewCell.m */; };
 		02E248E31FB99DBC00ECB2AB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E248E21FB99DBC00ECB2AB /* Home.storyboard */; };
 		02E248E51FB99DCD00ECB2AB /* SelectGem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02E248E41FB99DCD00ECB2AB /* SelectGem.storyboard */; };
@@ -92,6 +108,27 @@
 		02CB27FE1FB3477B0056C16D /* MissGemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MissGemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CB28021FB3477B0056C16D /* MissGemUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissGemUITests.m; sourceTree = "<group>"; };
 		02CB28041FB3477B0056C16D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02E17A861FCA531A008869EF /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
+		02E17A871FCA531A008869EF /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		02E17A891FCA531A008869EF /* UIViewController+Nav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Nav.h"; sourceTree = "<group>"; };
+		02E17A8A1FCA531A008869EF /* UIViewController+Nav.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Nav.m"; sourceTree = "<group>"; };
+		02E17A8B1FCA531A008869EF /* XHLaunchAdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdManager.h; sourceTree = "<group>"; };
+		02E17A8C1FCA531A008869EF /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		02E17A8E1FCA531A008869EF /* LaunchAdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAdModel.h; sourceTree = "<group>"; };
+		02E17A8F1FCA531A008869EF /* LaunchAdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAdModel.m; sourceTree = "<group>"; };
+		02E17A901FCA531A008869EF /* XHLaunchAdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdManager.m; sourceTree = "<group>"; };
+		02E17A911FCA531A008869EF /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		02E17A981FCA54F1008869EF /* LaunchVideoAd.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LaunchVideoAd.json; sourceTree = "<group>"; };
+		02E17A991FCA54F1008869EF /* video0.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video0.mp4; sourceTree = "<group>"; };
+		02E17A9A1FCA54F1008869EF /* video1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video1.mp4; sourceTree = "<group>"; };
+		02E17A9B1FCA54F1008869EF /* LaunchImageAd.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LaunchImageAd.json; sourceTree = "<group>"; };
+		02E17A9C1FCA54F1008869EF /* image4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image4.jpg; sourceTree = "<group>"; };
+		02E17A9D1FCA54F1008869EF /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
+		02E17A9E1FCA54F1008869EF /* image12.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = image12.gif; sourceTree = "<group>"; };
+		02E17A9F1FCA54F1008869EF /* image0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image0.jpg; sourceTree = "<group>"; };
+		02E17AA01FCA54F1008869EF /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
+		02E17AA11FCA54F1008869EF /* image11.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = image11.gif; sourceTree = "<group>"; };
+		02E17AA21FCA54F1008869EF /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpg; sourceTree = "<group>"; };
 		02E248D61FB99C3800ECB2AB /* GEMColumnTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEMColumnTableViewCell.m; sourceTree = "<group>"; };
 		02E248D71FB99C3800ECB2AB /* GEMColumnTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEMColumnTableViewCell.h; sourceTree = "<group>"; };
 		02E248E21FB99DBC00ECB2AB /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -188,6 +225,7 @@
 		022903A31FB4886000373981 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				02E17A831FCA531A008869EF /* LaunchScreen */,
 				022903A51FB4886000373981 /* Assets.xcassets */,
 				022903A61FB4886000373981 /* LaunchScreen.storyboard */,
 				022903A81FB4886000373981 /* Main.storyboard */,
@@ -334,6 +372,74 @@
 				02CB28041FB3477B0056C16D /* Info.plist */,
 			);
 			path = MissGemUITests;
+			sourceTree = "<group>";
+		};
+		02E17A831FCA531A008869EF /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				02E17A971FCA54F1008869EF /* Source */,
+				02E17A841FCA531A008869EF /* Tools */,
+				02E17A8D1FCA531A008869EF /* Model */,
+				02E17A911FCA531A008869EF /* WebViewController.h */,
+				02E17A8C1FCA531A008869EF /* WebViewController.m */,
+				02E17A8B1FCA531A008869EF /* XHLaunchAdManager.h */,
+				02E17A901FCA531A008869EF /* XHLaunchAdManager.m */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		02E17A841FCA531A008869EF /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				02E17A851FCA531A008869EF /* Network */,
+				02E17A881FCA531A008869EF /* UIViewController+ */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		02E17A851FCA531A008869EF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				02E17A861FCA531A008869EF /* Network.m */,
+				02E17A871FCA531A008869EF /* Network.h */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		02E17A881FCA531A008869EF /* UIViewController+ */ = {
+			isa = PBXGroup;
+			children = (
+				02E17A891FCA531A008869EF /* UIViewController+Nav.h */,
+				02E17A8A1FCA531A008869EF /* UIViewController+Nav.m */,
+			);
+			path = "UIViewController+";
+			sourceTree = "<group>";
+		};
+		02E17A8D1FCA531A008869EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02E17A8E1FCA531A008869EF /* LaunchAdModel.h */,
+				02E17A8F1FCA531A008869EF /* LaunchAdModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02E17A971FCA54F1008869EF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				02E17A981FCA54F1008869EF /* LaunchVideoAd.json */,
+				02E17A991FCA54F1008869EF /* video0.mp4 */,
+				02E17A9A1FCA54F1008869EF /* video1.mp4 */,
+				02E17A9B1FCA54F1008869EF /* LaunchImageAd.json */,
+				02E17A9C1FCA54F1008869EF /* image4.jpg */,
+				02E17A9D1FCA54F1008869EF /* image1.jpg */,
+				02E17A9E1FCA54F1008869EF /* image12.gif */,
+				02E17A9F1FCA54F1008869EF /* image0.jpg */,
+				02E17AA01FCA54F1008869EF /* image2.jpg */,
+				02E17AA11FCA54F1008869EF /* image11.gif */,
+				02E17AA21FCA54F1008869EF /* image3.jpg */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		02E248D41FB99C3800ECB2AB /* View */ = {
@@ -561,13 +667,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				022903AD1FB4886000373981 /* Assets.xcassets in Resources */,
+				02E17AA61FCA54F1008869EF /* LaunchImageAd.json in Resources */,
 				02E248E91FB99DE600ECB2AB /* WishList.storyboard in Resources */,
 				02E248E71FB99DDB00ECB2AB /* UserProfiles.storyboard in Resources */,
 				02E248E31FB99DBC00ECB2AB /* Home.storyboard in Resources */,
+				02E17AA31FCA54F1008869EF /* LaunchVideoAd.json in Resources */,
 				022903AF1FB4886000373981 /* Main.storyboard in Resources */,
+				02E17AA81FCA54F1008869EF /* image1.jpg in Resources */,
+				02E17AAC1FCA54F1008869EF /* image11.gif in Resources */,
+				02E17AA91FCA54F1008869EF /* image12.gif in Resources */,
+				02E17AA71FCA54F1008869EF /* image4.jpg in Resources */,
+				02E17AAD1FCA54F1008869EF /* image3.jpg in Resources */,
 				022903AE1FB4886000373981 /* LaunchScreen.storyboard in Resources */,
 				02E248E51FB99DCD00ECB2AB /* SelectGem.storyboard in Resources */,
+				02E17AAA1FCA54F1008869EF /* image0.jpg in Resources */,
+				02E17AAB1FCA54F1008869EF /* image2.jpg in Resources */,
+				02E17AA41FCA54F1008869EF /* video0.mp4 in Resources */,
 				022903B21FB4886000373981 /* Info.plist in Resources */,
+				02E17AA51FCA54F1008869EF /* video1.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,8 +766,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MissGem/Pods-MissGem-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
+				"${BUILT_PRODUCTS_DIR}/IDMPhotoBrowser/IDMPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JazzHands/JazzHands.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -664,14 +785,20 @@
 				"${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/XHLaunchAd/XHLaunchAd.framework",
 				"${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IDMPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JazzHands.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -685,8 +812,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMKeychain.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XHLaunchAd.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -782,18 +911,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				029F8F3D1FB9B4E800B0A5A4 /* GEMAuthentication.m in Sources */,
+				02E17A921FCA531A008869EF /* Network.m in Sources */,
 				022903F81FB4948400373981 /* NSData+AES256.m in Sources */,
 				02E248D81FB99C3800ECB2AB /* GEMColumnTableViewCell.m in Sources */,
 				022903F21FB4948400373981 /* Outgoing+QQ.m in Sources */,
 				022903F51FB4948400373981 /* Outgoing.m in Sources */,
 				022903BC1FB4900E00373981 /* GEMHomeViewController.m in Sources */,
+				02E17A951FCA531A008869EF /* LaunchAdModel.m in Sources */,
 				022903F61FB4948400373981 /* Outgoing+BaoPaiement.m in Sources */,
+				02E17A941FCA531A008869EF /* WebViewController.m in Sources */,
+				02E17A961FCA531A008869EF /* XHLaunchAdManager.m in Sources */,
 				022903F91FB4948400373981 /* NSString+MD5.m in Sources */,
 				022903F31FB4948400373981 /* Outgoing+Renren.m in Sources */,
 				029F903A1FB9BBD600B0A5A4 /* GEMNotificationString.m in Sources */,
 				022903F41FB4948400373981 /* Outgoing+Weibo.m in Sources */,
 				022903F71FB4948400373981 /* Outgoing+Weixin.m in Sources */,
 				022903B11FB4886000373981 /* AppDelegate.m in Sources */,
+				02E17A931FCA531A008869EF /* UIViewController+Nav.m in Sources */,
 				022903B01FB4886000373981 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

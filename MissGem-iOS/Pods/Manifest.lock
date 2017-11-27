@@ -14,21 +14,29 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - DACircularProgress (2.3.1)
+  - FLAnimatedImage (1.0.12)
+  - FSPagerView (0.7.1)
   - HMSegmentedControl (1.5.4)
   - IBAnimatable (5.0.0)
+  - IDMPhotoBrowser (1.10.2):
+    - DACircularProgress
+    - pop
+    - SDWebImage
   - IQKeyboardManager (5.0.6)
   - JazzHands (2.0.8)
   - lottie-ios (2.1.4)
-  - Material (2.12.16):
-    - Material/Core (= 2.12.16)
-  - Material/Core (2.12.16):
+  - Material (2.12.17):
+    - Material/Core (= 2.12.17)
+  - Material/Core (2.12.17):
     - Motion (~> 1.2.5)
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.13)
-  - MJRefresh (3.1.15)
+  - MJRefresh (3.1.15.1)
   - Motion (1.2.5):
     - Motion/Core (= 1.2.5)
   - Motion/Core (1.2.5)
+  - pop (1.0.10)
   - RAMAnimatedTabBarController (3.0.0)
   - Reachability (3.2)
   - Realm (3.0.2):
@@ -39,15 +47,19 @@ PODS:
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
   - SVProgressHUD (2.2.2)
+  - XHLaunchAd (3.9.1):
+    - FLAnimatedImage (~> 1.0.12)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - FSPagerView
   - HMSegmentedControl (~> 1.5.4)
   - IBAnimatable (~> 5.0.0)
+  - IDMPhotoBrowser
   - IQKeyboardManager (~> 5.0.6)
-  - JazzHands
+  - JazzHands (~> 2.0.8)
   - lottie-ios (~> 2.1.4)
   - Material (~> 2.12.16)
   - MBProgressHUD (~> 1.0.0)
@@ -60,28 +72,35 @@ DEPENDENCIES:
   - SAMKeychain (~> 1.5.3)
   - SDWebImage (~> 4.2.2)
   - SVProgressHUD (~> 2.2.2)
+  - XHLaunchAd
   - YTKNetwork (~> 2.0.4)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
   HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
   IBAnimatable: aa2286a9cf8fb4ae2e1be85c5287ae56143b024f
+  IDMPhotoBrowser: 4bb459b1faffc228e92bccdf7c54ad6d6b7e8c37
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   JazzHands: 355dc5c2b6fc38ee460d0ed7836c69539263f477
   lottie-ios: 94fa2d82547ce3adf1e61157653ba99999fd279f
-  Material: 00fdeb39f5d97dc19f09b160e8b95c47e2ed708d
+  Material: 5efae18f40ebf40baa2c252086d4646849ee7118
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
-  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
+  MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   Motion: 88a8bee21926af792333f4b9e7170f710e9e48f3
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RAMAnimatedTabBarController: 6d0638ad14db4939006e8c58933e05bde93e66f6
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  XHLaunchAd: f452a6758e46ca6fbaf8b19eef4865003ec710e7
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: d955d601ca46c83fcc6f5fbc742f98e349ab3f6f
+PODFILE CHECKSUM: 7cfac4ecf3e04be0aaec3b1f68a92d62e2ba1482
 
 COCOAPODS: 1.3.1

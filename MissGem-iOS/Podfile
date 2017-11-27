@@ -25,6 +25,9 @@ pod 'SAMKeychain', '~>1.5.3'
 pod 'HMSegmentedControl', '~>1.5.4'
 pod 'Material', '~>2.12.16'
 pod 'JazzHands', '~>2.0.8'
+pod 'XHLaunchAd'
+pod 'IDMPhotoBrowser'
+pod 'FSPagerView'
 
 #pod 'FDFullsreenPopGesture'
 

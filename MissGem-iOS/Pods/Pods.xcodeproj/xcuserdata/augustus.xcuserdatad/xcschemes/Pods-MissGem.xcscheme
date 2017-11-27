@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D088D8C3867D662525C06E13F555F32F"
+               BlueprintIdentifier = "DFFA05913B3E08B2622DD148D7E79FBA"
                BuildableName = "Pods_MissGem.framework"
                BlueprintName = "Pods-MissGem"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D088D8C3867D662525C06E13F555F32F"
+            BlueprintIdentifier = "DFFA05913B3E08B2622DD148D7E79FBA"
             BuildableName = "Pods_MissGem.framework"
             BlueprintName = "Pods-MissGem"
             ReferencedContainer = "container:Pods.xcodeproj">
